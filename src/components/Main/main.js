@@ -1,4 +1,5 @@
 import React from 'react';
+import Promo from "../Promo/promo";
 
 
 
@@ -7,7 +8,7 @@ function Main () {
 
     return (
         <main className='main'>
-            {/*<Promo />*/}
+            <Promo />
             {/*<NavTab />*/}
             {/*<AboutProject />*/}
             {/*<Techs />*/}

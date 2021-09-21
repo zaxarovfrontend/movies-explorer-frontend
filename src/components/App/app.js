@@ -2,14 +2,14 @@ import React from 'react';
 import { Route, Switch } from "react-router-dom";
 
 import '../../index.css';
-import Main from "../Main/Main";
+import Main from "../Main/main";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
 import NotFound from "../NotFound/NotFound";
-import Header from "../Header/Header";
+import Header from "../Header/header";
 
 function App() {
     return (

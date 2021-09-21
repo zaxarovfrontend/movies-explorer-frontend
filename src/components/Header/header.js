@@ -8,6 +8,7 @@ function Header({ lending }) {
     // const loggedIn = false;
     return (
         <header className="header">
+            <div className='header__group'>
             <a href="#" target="_blank" rel="noopener"><img className="header__logo" src={Logo}
                                                             alt="логотип"/></a>
             {/*{!loggedIn && lending ? (*/}
@@ -16,11 +17,12 @@ function Header({ lending }) {
                 <Link className='header__button' to="/signup">
                     Регистрация
                 </Link>
-                <Link className='header__button' to="/signin">
+                <Link className='header__button header__button-active' to="/signin">
                     Войти
                 </Link>
                 </div>
             </>
+        </div>
             {/*) : (*/}
             {/*/!*<MenuNavigation />*!/*/}
             {/*)}*/}

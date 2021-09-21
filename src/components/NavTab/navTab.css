@@ -1,0 +1,12 @@
+.nav-tab__button {
+    background-color: #073042;
+    width: 129px;
+    height: 36px;
+    border: 1px solid #FFFFFF;
+    border-radius: 3px;
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+}

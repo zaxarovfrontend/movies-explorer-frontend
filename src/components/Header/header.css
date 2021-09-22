@@ -6,15 +6,33 @@
     background-color: #073042;
 }
 
+@media screen and (min-width: 1024px) {
+    .header {
+        min-width: 1280px;
+    }
+}
+
 .header__group {
     height: 74px;
-    min-width: 1140px;
+    min-width: 706px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 70px;
-    padding-right: 70px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border: solid 1px red;
 }
+
+
+@media screen and (min-width: 1024px) {
+    .header__group {
+        min-width: 1140px;
+        padding-left: 70px;
+        padding-right: 70px;
+    }
+}
+
+
 .header__container {
     display: flex;
 

@@ -9,4 +9,12 @@
     font-weight: 500;
     font-size: 12px;
     line-height: 16px;
+    align-self: flex-start;
+    margin-bottom: 76px;
+}
+
+@media screen and (min-width: 1024px) {
+    .nav-tab__button {
+        margin-bottom: 0;
+    }
 }

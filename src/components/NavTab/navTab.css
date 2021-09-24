@@ -1,20 +1,29 @@
-.nav-tab__button {
-    background-color: #073042;
-    width: 129px;
-    height: 36px;
-    border: 1px solid #FFFFFF;
-    border-radius: 3px;
-    color: #FFFFFF;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 16px;
-    align-self: flex-start;
-    margin-bottom: 76px;
-}
-
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 320px) {
     .nav-tab__button {
-        margin-bottom: 0;
+        background-color: #073042;
+        width: 129px;
+        height: 36px;
+        border: 1px solid #FFFFFF;
+        border-radius: 3px;
+        color: #FFFFFF;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 16px;
+        align-self: flex-start;
+        margin-bottom: 28px;
     }
 }
+
+
+@media screen and (min-width: 768px) {
+.nav-tab__button {
+    margin-bottom: 76px;
+}
+}
+
+/*@media screen and (min-width: 1024px) {*/
+/*    .nav-tab__button {*/
+/*        margin-bottom: 2px;*/
+/*    }*/
+/*}*/

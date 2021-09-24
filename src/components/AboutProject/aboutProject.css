@@ -1,0 +1,76 @@
+.aboutProject {
+    color: #FFFFFF;
+    background-color: #202020;
+    min-width: 320px;
+    margin-bottom: 100px;
+}
+
+.aboutProject__container {
+    width: 284px;
+    margin: 70px auto 0 auto;
+    border: solid 1px red;
+}
+
+
+.aboutProject__header-title {
+    margin: 0 0 28px 0;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+.aboutProject__block {
+    padding-top: 60px;
+    border-top: #DADADA 1px solid;
+}
+
+.aboutProject__title {
+    margin: 0 0 16px 0;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 22px;
+    letter-spacing: 1px;
+}
+
+.aboutProject__subtitle {
+    margin: 0 0 57px 0;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 16px;
+}
+
+.aboutProject__info {
+    display: grid;
+    grid-template-columns: 100px 184px;
+}
+
+
+.aboutProject__week {
+    background-color: #303030;
+    height: 23px;
+    margin: 0;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 13px;
+    text-align: center;
+    padding-top: 12px;
+}
+
+.aboutProject__week:first-of-type {
+    background-color: #3DDC84;
+}
+
+.aboutProject__text {
+    margin: 0;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 13px;
+    color: #A0A0A0;
+    text-align: center;
+    padding-top: 8px;
+}

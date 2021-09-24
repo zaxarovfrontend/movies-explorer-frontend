@@ -11,7 +11,7 @@ function Promo () {
                 <p className='promo__subtitle'>Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
             <NavTab/>
             </div>
-                <img className='promo__logo' src={logoHeader}></img>
+                <img className='promo__logo' alt='логотип'src={logoHeader}></img>
             </div>
         </section>
     )

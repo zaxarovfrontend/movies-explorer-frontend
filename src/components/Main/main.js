@@ -1,5 +1,6 @@
 import React from 'react';
 import Promo from "../Promo/promo";
+import AboutProject from "../AboutProject/aboutProject";
 
 
 
@@ -9,8 +10,7 @@ function Main () {
     return (
         <main className='main'>
             <Promo />
-            {/*<NavTab />*/}
-            {/*<AboutProject />*/}
+            <AboutProject />
             {/*<Techs />*/}
             {/*<AboutMe />*/}
             {/*<Portfolio />*/}

@@ -9,6 +9,7 @@ function Header({ lending }) {
     return (
         <header className="header">
             <div className='header__group'>
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a href="#" target="_blank" rel="noopener"><img className="header__logo" src={Logo}
                                                             alt="логотип"/></a>
             {/*{!loggedIn && lending ? (*/}

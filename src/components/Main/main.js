@@ -2,7 +2,7 @@ import React from 'react';
 import Promo from "../Promo/promo";
 import AboutProject from "../AboutProject/aboutProject";
 import Techs from "../Techs/techs";
-
+import AboutMe from "../AboutMe/aboutMe";
 
 function Main () {
 
@@ -12,7 +12,7 @@ function Main () {
             <Promo />
             <AboutProject />
             <Techs />
-            {/*<AboutMe />*/}
+            <AboutMe />
             {/*<Portfolio />*/}
             {/*<footer />*/}
         </main>

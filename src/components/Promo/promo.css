@@ -8,7 +8,6 @@
 
 @media screen and (min-width: 768px) {
     .promo {
-        /*min-width: 1280px;*/
         background-color: #073042;
         color: #FFFFFF;
         display: flex;
@@ -17,7 +16,7 @@
 }
 
     .promo__group {
-        min-width: 320px;
+        min-width: 284px;
         display: flex;
         flex-direction: column-reverse;
         align-items: center;
@@ -28,7 +27,7 @@
 
 @media screen and (min-width: 768px) {
     .promo__group {
-        min-width: 680px;
+        min-width: 668px;
     }
 }
 
@@ -65,6 +64,7 @@
 }
 
 
+
 @media screen and (min-width: 1280px) {
     .promo__container {
         margin-right: 190px;
@@ -75,10 +75,10 @@
 
     .promo__title {
         margin: 53px 0 -27px 0;
-        width: 320px;
+        width: 284px;
         font-style: normal;
         font-weight: normal;
-        font-size: 29px;
+        font-size: 28px;
         line-height: 38px;
         text-align: center;
     }
@@ -87,7 +87,7 @@
 @media screen and (min-width: 768px) {
     .promo__title {
         margin: 44px 0 -27px 0;
-        width: 740px;
+        width: 668px;
         font-size: 40px;
         line-height: 56px;
         text-align: center;

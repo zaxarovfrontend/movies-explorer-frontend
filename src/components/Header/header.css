@@ -22,7 +22,7 @@
 
 .header__group {
     height: 74px;
-    min-width: 294px;
+    min-width: 284px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,7 +32,7 @@
 
 @media screen and (min-width: 768px) {
     .header__group {
-        min-width: 706px;
+        min-width: 668px;
     }
 }
 

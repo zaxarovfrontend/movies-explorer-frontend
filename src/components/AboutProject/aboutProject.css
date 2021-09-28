@@ -10,23 +10,22 @@
 }
 
 .aboutProject__container {
-    width: 284px;
+    max-width: 284px;
     margin: 70px auto 0 auto;
-    border: solid 1px red;
     color: #FFFFFF;
     background-color: #202020;
 }
 
 @media screen and (min-width: 768px) {
     .aboutProject__container {
-        width: 668px;
+        max-width: 668px;
         margin: 86px auto 0 auto;
     }
 }
 
 @media screen and (min-width: 1280px) {
     .aboutProject__container {
-        width: 1140px;
+        max-width: 1140px;
         margin: 104px auto 0 auto;
     }
 }
@@ -49,9 +48,14 @@
     }
 }
 
+@media screen and (min-width: 1280px) {
+    .aboutProject__header-title {
+        margin: 0 0 30px 0;
+    }
+}
 
 .aboutProject__block {
-    padding-top: 60px;
+    padding-top: 64px;
     border-top: #DADADA 1px solid;
 }
 

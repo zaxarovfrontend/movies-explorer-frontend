@@ -22,8 +22,8 @@ function AboutMe() {
             </div>
         </div>
         <div className='aboutMe__links'>
-            <a href="https://github.com/zaxarovfrontend" target="_blank" rel="noopener" className="aboutMe__link">Github</a>
-            <a href="https://www.facebook.com/profile.php?id=100001487061944" target="_blank" rel="noopener" className="aboutMe__link">Facebook</a>
+            <a href="https://github.com/zaxarovfrontend" target="_blank" rel="noreferrer" className="aboutMe__link">Github</a>
+            <a href="https://www.facebook.com/profile.php?id=100001487061944" target="_blank" rel="noreferrer" className="aboutMe__link">Facebook</a>
         </div>
     </div>
 

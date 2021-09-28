@@ -1,5 +1,6 @@
 import React from 'react';
 import './footer.css';
+import '../App/hover/hover.css'
 
 function Footer() {
     return (

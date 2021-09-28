@@ -81,6 +81,10 @@
     margin: 0 0 0 0;
     color: #FFFFFF;
     text-decoration: none;
+    transition: opacity 0.9s linear 0.3s;
+}
+.portfolio__title:hover {
+    opacity:60%;
 }
 
 

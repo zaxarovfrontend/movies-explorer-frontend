@@ -56,6 +56,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 30px;
+}
+@media screen and (min-width: 768px) {
+    .promo__container {
+        margin-bottom: 78px;
+    }
 }
 
 
@@ -63,6 +69,7 @@
     .promo__container {
         margin-right: 190px;
         align-items: start;
+        margin-bottom: 77px;
     }
 }
 

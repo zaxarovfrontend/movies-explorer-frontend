@@ -126,4 +126,10 @@
     font-size: 14px;
     line-height: 17px;
     margin-right: 26px;
+    transition: opacity 0.9s linear 0.3s;
 }
+
+.aboutMe__link:hover {
+    opacity:60%;
+}
+

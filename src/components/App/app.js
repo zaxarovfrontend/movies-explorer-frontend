@@ -16,10 +16,10 @@ function App() {
         <div className="page">
            <Header />
         <Switch>
-            <Route exat path ='/'>
+            <Route exact path ='/'>
                 <Main />
             </Route>
-            <Route path ='/movies'>
+            <Route  path ='/movies'>
                 <Movies />
             </Route>
             <Route path ='/saved-movies'>

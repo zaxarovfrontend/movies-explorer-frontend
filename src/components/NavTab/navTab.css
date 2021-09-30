@@ -11,5 +11,6 @@
         font-size: 12px;
         line-height: 16px;
         align-self: flex-start;
+        cursor: pointer;
     }
 }

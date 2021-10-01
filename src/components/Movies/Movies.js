@@ -2,6 +2,7 @@ import React from 'react';
 import SearchForm from "../SearchForm/searchForm";
 import Preloader from "../Preloader/preloader";
 import MoviesCardList from "../MoviesCardList/moviesCardList";
+import Footer from "../Footer/footer";
 
 
 function Movies() {
@@ -10,6 +11,7 @@ function Movies() {
         <SearchForm/>
             {/*<Preloader/>*/}
       <MoviesCardList/>
+           <Footer/>
         </main>
 
     )

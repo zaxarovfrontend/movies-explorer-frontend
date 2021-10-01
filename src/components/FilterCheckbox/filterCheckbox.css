@@ -8,18 +8,29 @@
 
 @media screen and (min-width: 768px) {
     .filter-checkbox {
-        margin: 18px 0 60px auto;
+        margin: 18px 0 47px auto;
         max-width: 169px;
     }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1280px) {
     .filter-checkbox {
-        margin-left: 18px;
+        margin: 20px 0 47px 0;
+        max-width: 169px;
         flex-direction: initial;
-        margin-bottom: 48px;
     }
 }
+
+
+
+
+/*@media screen and (min-width: 768px) {*/
+/*    .filter-checkbox {*/
+/*        margin-left: 18px;*/
+/*        flex-direction: initial;*/
+/*        margin-bottom: 48px;*/
+/*    }*/
+/*}*/
 
 @media screen and (min-width: 768px) {
     .filter__group {

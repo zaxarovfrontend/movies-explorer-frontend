@@ -13,7 +13,7 @@ function MoviesCard(props) {
                     {pathname === "/movies" ? (
                         <button className='movies-card__like'></button>
                     ) : (
-                        <button className='movies-card__dislike'></button>
+                        <button className='movies-card__delete'></button>
                     )}
                 </div>
                 <p className='movies-card__subtitle'>{props.subtitle}</p>

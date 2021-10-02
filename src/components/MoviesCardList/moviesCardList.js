@@ -35,7 +35,7 @@ function MoviesCardList(props) {
                     <MoviesCard url={image11} title='Пи Джей Харви: A dog called money' subtitle='1ч 47м'/>
                     <MoviesCard url={image12} title='По волнам: Искусство звука в кино' subtitle='1ч 47м'/>
                 </div>
-                <button className='movies-cardList__button'>Ещё</button>
+                {/*<button className='movies-cardList__button'>Ещё</button>*/}
             </div>
 
         </section>

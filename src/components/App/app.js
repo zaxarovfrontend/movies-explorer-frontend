@@ -7,14 +7,14 @@ import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/savedMovies";
 import Profile from "../Profile/profile";
 import Login from "../Login/Login";
-import Register from "../Register/Register";
-import NotFound from "../NotFound/NotFound";
+import Register from "../Register/register";
+import NotFound from "../NotFound/notFound";
 import Header from "../Header/header";
 
 function App() {
     return (
         <div className="page">
-           <Header />
+           {/*<Header />*/}
         <Switch>
             <Route exact path ='/'>
                 <Main />

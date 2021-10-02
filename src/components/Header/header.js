@@ -3,9 +3,7 @@ import React from 'react';
 import Logo from '../../images/logo.svg';
 import {Link} from "react-router-dom";
 
-
 function Header({ loggedIn }) {
-
     return (
         <header className="header">
             <div className='header__group'>

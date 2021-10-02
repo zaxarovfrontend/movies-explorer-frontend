@@ -20,8 +20,8 @@ function Profile() {
                         <input className='profile__input' type='email' name='email'
                                value={email || ''} placeholder='zaxarov@mail.ru' required/>
                     </div>
-                <button className='profile__subtitle' type="submit">Редактировать</button>
-                <Link className='profile__exit'>Выйти из аккаунта</Link>
+                    <button className='profile__subtitle' type="submit">Редактировать</button>
+                    <Link className='profile__exit'>Выйти из аккаунта</Link>
                 </form>
             </div>
 

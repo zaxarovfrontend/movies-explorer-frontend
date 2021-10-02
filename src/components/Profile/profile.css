@@ -72,10 +72,6 @@
     }
 }
 
-
-
-
-
 .profile__input {
     width: 120px;
     background-color: #202020;
@@ -87,7 +83,6 @@
         width: 141px;
     }
 }
-
 
 .profile__input-name {
     width: 130px;
@@ -115,7 +110,6 @@
     font-size: 11px;
     line-height: 13px;
     text-align: right;
-    align-self: baseline;
 }
 
 .profile__subtitle {
@@ -144,7 +138,6 @@
         line-height: 16px;
     }
 }
-
 
 .profile__exit {
     color: #EE3465;

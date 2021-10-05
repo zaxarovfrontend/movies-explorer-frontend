@@ -1,29 +1,34 @@
 import React from 'react';
 
 import Logo from '../../images/logo.svg';
-import {Link} from "react-router-dom";
+import {Link, NavLink, useLocation} from "react-router-dom";
+import Navigation from "../Navigation/Navigation";
 
-function Header({ loggedIn }) {
+
+function Header({lending}) {
+    const loggedIn = false;
     return (
-        <header className="header">
+        <header className={loggedIn ? "header" : "header header-style"}>
             <div className='header__group'>
-            <a href="#" target="_blank" rel="noopener"><img className="header__logo" src={Logo}
-                                                            alt="логотип"/></a>
-            <>
-                <div className='header__container'>
-                <Link className='header__button' to="/signup">
-                    Регистрация
-                </Link>
-                <Link className='header__button header__button-active' to="/signin">
-                    Войти
-                </Link>
-                </div>
-            </>
-
-        </div>
-
+                <Link href="#" target="_blank" rel="noopener"><img className="header__logo" src={Logo}
+                                                                   alt="логотип"/></Link>
+                {!loggedIn && lending ? (
+                    <>
+                        <div className='header__container'>
+                            <NavLink className='header__button' to="/signup">
+                                Регистрация
+                            </NavLink>
+                            <NavLink className='header__button header__button-active' to="/signin">
+                                Войти
+                            </NavLink>
+                        </div>
+                    </>
+                ) : (
+                    <Navigation />
+                    )}
+            </div>
         </header>
-    );
+);
 }
 
 

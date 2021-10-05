@@ -11,7 +11,7 @@ function Main () {
 
     return (
         <main className='main'>
-            <Header/>
+            {/*<Header/>*/}
             <Promo />
             <AboutProject />
             <Techs />

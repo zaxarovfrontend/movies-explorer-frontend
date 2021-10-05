@@ -6,9 +6,11 @@ import Navigation from "../Navigation/Navigation";
 
 
 function Header({lending}) {
+    const {pathname} = useLocation();
+    const isColorHead = pathname === '/' ? 'header' : 'header header-style';
     const loggedIn = false;
     return (
-        <header className={loggedIn ? "header" : "header header-style"}>
+        <header className={isColorHead}>
             <div className='header__group'>
                 <Link href="#" target="_blank" rel="noopener"><img className="header__logo" src={Logo}
                                                                    alt="логотип"/></Link>
@@ -25,11 +27,12 @@ function Header({lending}) {
                     </>
                 ) : (
                     <Navigation />
-                    )}
+                )}
             </div>
         </header>
-);
+    );
 }
 
 
 export default Header;
+

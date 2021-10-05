@@ -3,6 +3,13 @@
     margin-top: 81px;
 }
 
+@media screen and (min-width: 768px) {
+    .search-form {
+        margin-top: 70px;
+    }
+}
+
+
 .search-form__container {
     max-width: 292px;
     border: solid 1px red;

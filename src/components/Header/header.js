@@ -12,7 +12,7 @@ function Header(props) {
         <header className={isColorHead}>
             <div className='header__group'>
                  <LogoHeader/>
-                {props.loggedIn && ( pathname === '/movies' || pathname === '/saved-movies') ? (
+                {props.loggedIn && ( pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile') ? (
                         <Navigation />
                 ) : (
                     <>

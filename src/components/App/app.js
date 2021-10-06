@@ -12,10 +12,11 @@ import NotFound from "../NotFound/notFound";
 import Header from "../Header/header";
 
 function App() {
+    const [loggedIn, setLoggedIn] = React.useState(true);
 
     return (
         <div className="page">
-           <Header />
+           <Header  loggedIn={loggedIn}/>
         <Switch>
             <Route exact path ='/'>
                 <Main />

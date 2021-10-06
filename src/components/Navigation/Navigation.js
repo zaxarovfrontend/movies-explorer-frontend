@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
-function Navigation({}) {
+function Navigation() {
+    // const loggedIn = false;
     return(
         <header>
             <>
@@ -12,10 +13,9 @@ function Navigation({}) {
                     </div>
                     <Link to='/profile' className='header__nav-link header__nav-link-style'>Аккаунт</Link>
                 </div>
-
             </>
         </header>
+
     )
 }
-
 export default Navigation;

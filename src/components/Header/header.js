@@ -5,16 +5,18 @@ import {Link, NavLink, useLocation} from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 
 
-function Header({lending}) {
+function Header(props) {
     const {pathname} = useLocation();
     const isColorHead = pathname === '/' ? 'header' : 'header header-style';
-    const loggedIn = false;
+    // const loggedIn = false;
     return (
         <header className={isColorHead}>
             <div className='header__group'>
                 <Link href="#" target="_blank" rel="noopener"><img className="header__logo" src={Logo}
                                                                    alt="логотип"/></Link>
-                {!loggedIn && lending ? (
+                {props.loggedIn && ( pathname === '/movies' || pathname === '/saved-movies') ? (
+                        <Navigation />
+                ) : (
                     <>
                         <div className='header__container'>
                             <NavLink className='header__button' to="/signup">
@@ -25,8 +27,6 @@ function Header({lending}) {
                             </NavLink>
                         </div>
                     </>
-                ) : (
-                    <Navigation />
                 )}
             </div>
         </header>

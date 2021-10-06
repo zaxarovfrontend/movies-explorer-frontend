@@ -16,18 +16,21 @@ function App() {
 
     return (
         <div className="page">
-           <Header  loggedIn={loggedIn}/>
         <Switch>
             <Route exact path ='/'>
+                <Header  loggedIn={loggedIn}/>
                 <Main />
             </Route>
             <Route  path ='/movies'>
+                <Header  loggedIn={loggedIn}/>
                 <Movies />
             </Route>
             <Route path ='/saved-movies'>
+                <Header  loggedIn={loggedIn}/>
                 <SavedMovies/>
             </Route>
             <Route path ='/profile'>
+                <Header  loggedIn={loggedIn}/>
                 <Profile/>
             </Route>
             <Route path ='/signin'>

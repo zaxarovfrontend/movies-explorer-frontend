@@ -1,13 +1,17 @@
 import React from 'react';
 import './register.css';
 import {Link} from "react-router-dom";
+import LogoHeader from "../LogoHeader/logo";
 
 function Register() {
     const [name, email] = React.useState('')
     const [password, setPassword] = React.useState('')
     return (
+
         <section className='register'>
+
             <div className='register__container'>
+                <LogoHeader/>
                 <h1 className='register__title'>Добро пожаловать!</h1>
                 <form className='register__form'>
                     <div className='register__box'>

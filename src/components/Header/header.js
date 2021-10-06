@@ -1,19 +1,17 @@
 import React from 'react';
 
-import Logo from '../../images/logo.svg';
-import {Link, NavLink, useLocation} from "react-router-dom";
+import {NavLink, useLocation} from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
+import LogoHeader from "../LogoHeader/logo";
 
 
 function Header(props) {
     const {pathname} = useLocation();
     const isColorHead = pathname === '/' ? 'header' : 'header header-style';
-    // const loggedIn = false;
     return (
         <header className={isColorHead}>
             <div className='header__group'>
-                <Link href="#" target="_blank" rel="noopener"><img className="header__logo" src={Logo}
-                                                                   alt="логотип"/></Link>
+                 <LogoHeader/>
                 {props.loggedIn && ( pathname === '/movies' || pathname === '/saved-movies') ? (
                         <Navigation />
                 ) : (
@@ -27,6 +25,7 @@ function Header(props) {
                             </NavLink>
                         </div>
                     </>
+
                 )}
             </div>
         </header>

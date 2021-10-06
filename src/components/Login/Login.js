@@ -1,6 +1,7 @@
 import React from 'react';
 import '../Register/register.css';
 import {Link} from "react-router-dom";
+import LogoHeader from "../LogoHeader/logo";
 
 
 function Login() {
@@ -9,6 +10,7 @@ function Login() {
     return (
         <section className='login'>
             <div className='register__container'>
+                <LogoHeader/>
                 <h1 className='register__title'>Добро пожаловать!</h1>
                 <form className='register__form'>
                     <div className='register__box'>

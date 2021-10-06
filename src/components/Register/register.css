@@ -1,16 +1,31 @@
 .register {
     min-width: 320px;
 }
+@media screen and (min-width: 768px) {
+    .register {
+        margin-top: 241px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .register {
+        margin-top: 81px;
+    }
+}
+
 .register__container {
-    margin: 0 auto 0 auto;
+    margin: 39px auto 0 auto;
     display: flex;
     flex-direction: column;
     max-width: 260px;
+    align-items: center;
 }
+
 
 @media screen and (min-width: 768px) {
     .register__container {
         max-width: 396px;
+        align-items: start;
     }
 }
 
@@ -27,7 +42,7 @@
     line-height: 29px;
     text-align: center;
     color: #FFFFFF;
-    margin: 30px 0 71px 0;
+    margin: 48px 0 71px 0;
 }
 
 @media screen and (min-width: 768px) {

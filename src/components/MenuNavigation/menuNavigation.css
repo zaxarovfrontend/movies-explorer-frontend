@@ -1,11 +1,13 @@
 .menu-navigation {
-    /*position: fixed;*/
-    /*top: 0;*/
-    /*right: 0;*/
-    /*left: 0;*/
-    /*bottom: 0;*/
+    opacity: 0;
+    transition: visibility .5s, opacity .5s linear;
+    display: none;
 }
 
+.menu-navigation__opened {
+    visibility: visible;
+    opacity: 1;
+}
 
 .menu-navigation__container {
     position: absolute;
@@ -93,8 +95,6 @@
     line-height: 30px;
     color: #FFFFFF;
 }
-
-
 
 
 

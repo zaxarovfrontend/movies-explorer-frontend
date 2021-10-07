@@ -15,6 +15,7 @@ import MenuNavigation from "../MenuNavigation/menuNavigation";
 function App() {
     const [loggedIn, setLoggedIn] = React.useState(true);
 
+
     return (
         <div className="page">
         <Switch>

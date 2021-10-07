@@ -3,7 +3,6 @@
     margin-bottom: 13px;
     display: flex;
     flex-direction: column;
-    border: solid 1px red;
 }
 @media screen and (min-width: 768px) {
     .movies-card {
@@ -13,7 +12,6 @@
 
 .movies-card__container {
     max-width: 300px;
-    border: solid 1px red;
     margin: 0 auto;
 }
 

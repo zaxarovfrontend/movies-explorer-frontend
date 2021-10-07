@@ -90,6 +90,7 @@
     border-radius: 34px;
     transition: 1.4s;
     background-color: #fff;
+    cursor: pointer;
 }
 
 .filter-checkbox__slider:before {

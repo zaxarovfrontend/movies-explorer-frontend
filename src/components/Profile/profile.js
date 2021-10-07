@@ -21,10 +21,9 @@ function Profile() {
                                value={email || ''} placeholder='zaxarov@mail.ru' required/>
                     </div>
                     <button className='profile__subtitle' type="submit">Редактировать</button>
-                    <Link className='profile__exit'>Выйти из аккаунта</Link>
+                    <Link className='profile__exit' to='/signin'>Выйти из аккаунта</Link>
                 </form>
             </div>
-
         </section>
 
     )

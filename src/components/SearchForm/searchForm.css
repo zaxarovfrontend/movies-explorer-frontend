@@ -12,7 +12,6 @@
 
 .search-form__container {
     max-width: 292px;
-    border: solid 1px red;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -32,10 +31,23 @@
     }
 }
 
+
 .search-form__input {
-    width: 92px;
+    width: 252px;
     background-color: #202020;
     border: 0;
+}
+
+@media screen and (min-width: 768px) {
+    .search-form__input {
+        width: 662px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .search-form__input {
+        width: 1112px;
+    }
 }
 
 .search-form__button {

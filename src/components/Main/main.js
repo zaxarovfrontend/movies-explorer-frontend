@@ -18,7 +18,6 @@ function Main () {
             <Portfolio />
             <Footer />
         </main>
-
     )
 }
 

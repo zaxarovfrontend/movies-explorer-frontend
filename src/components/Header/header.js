@@ -3,7 +3,6 @@ import React from 'react';
 import {NavLink, useLocation} from "react-router-dom";
 import Navigation from "../Navigation/Navigation";
 import LogoHeader from "../LogoHeader/logo";
-import MenuNavigation from "../MenuNavigation/menuNavigation";
 
 
 function Header(props) {
@@ -26,13 +25,11 @@ function Header(props) {
                             </NavLink>
                         </div>
                     </>
-
                 )}
             </div>
         </header>
     );
 }
-
 
 export default Header;
 

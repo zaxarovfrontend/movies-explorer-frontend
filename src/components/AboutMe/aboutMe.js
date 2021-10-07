@@ -9,7 +9,7 @@ function AboutMe() {
         <h2 className='aboutProject__header-title aboutMe__header-title'>Студент</h2>
         <div className='aboutProject__block aboutMe__blocks'>
             <div className='aboutProject__box aboutMe__box'>
-                <img className='aboutMe__img' src={image} alt='фото студента'></img>
+                <img className='aboutMe__img' src={image} alt='фото студента'/>
             </div>
             <div className='aboutProject__box'>
                 <h3 className='aboutProject__title aboutMe__title'>Владимир</h3>
@@ -22,11 +22,10 @@ function AboutMe() {
             </div>
         </div>
         <div className='aboutMe__links'>
-            <a href="https://github.com/zaxarovfrontend" target="_blank" rel="noreferrer" className="aboutMe__link">Github</a>
-            <a href="https://www.facebook.com/profile.php?id=100001487061944" target="_blank" rel="noreferrer" className="aboutMe__link">Facebook</a>
+            <a href="https://github.com/zaxarovfrontend" target="_blank"  rel="noopener noreferrer" className="aboutMe__link">Github</a>
+            <a href="https://www.facebook.com/profile.php?id=100001487061944" target="_blank"  rel="noopener noreferrer" className="aboutMe__link">Facebook</a>
         </div>
     </div>
-
 </section>
 
     )

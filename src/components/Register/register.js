@@ -5,7 +5,7 @@ import LogoHeader from "../LogoHeader/logo";
 
 function Register() {
     const [name, email] = React.useState('')
-    const [password, setPassword] = React.useState('')
+    const [password] = React.useState('')
     return (
 
         <section className='register'>

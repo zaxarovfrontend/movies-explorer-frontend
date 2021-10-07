@@ -131,11 +131,18 @@
 
 .header__menu {
     width: 40px;
+    height: 43px;
+    cursor: pointer;
+    background-image: url(../../images/icon__COLOR_icon-main.svg);
+    background-position: center;
+    background-color: transparent;
+    border: 0;
 }
 
 @media screen and (min-width: 768px) {
     .header__menu {
         width: 44px;
+        height: 44px;
     }
 }
 

@@ -1,11 +1,12 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import menuImg from '../../images/icon__COLOR_icon-main.svg';
+import MenuNavigation from "../MenuNavigation/menuNavigation";
+
 
 function Navigation() {
-    // const loggedIn = false;
     return(
         <header>
+            <MenuNavigation/>
             <>
                 <div className='header__group header__group-style'>
                     <div className='header__box-link'>
@@ -13,7 +14,7 @@ function Navigation() {
                     <Link to='/saved-movies' className='header__nav-link'>Сохраненые фильмы</Link>
                     </div>
                     <Link to='/profile' className='header__nav-link header__nav-link-style'>Аккаунт</Link>
-                    <img className='header__menu' src={menuImg} alt='иканка меню'/>
+                    <button className='header__menu'/>
                 </div>
             </>
         </header>

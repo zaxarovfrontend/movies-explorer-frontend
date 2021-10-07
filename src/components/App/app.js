@@ -10,6 +10,7 @@ import Login from "../Login/Login";
 import Register from "../Register/register";
 import NotFound from "../NotFound/notFound";
 import Header from "../Header/header";
+import MenuNavigation from "../MenuNavigation/menuNavigation";
 
 function App() {
     const [loggedIn, setLoggedIn] = React.useState(true);

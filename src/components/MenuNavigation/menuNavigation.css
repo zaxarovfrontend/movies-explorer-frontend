@@ -12,9 +12,9 @@
     top: 0;
     right: 0;
     width: 320px;
-    height: 780px;
-    background-color:  #202020;
+    height: 1024px;
     z-index: 1;
+    background-color:  #202020;
 }
 
 @media screen and (min-width: 768px) {
@@ -92,13 +92,8 @@
     color: #FFFFFF;
 }
 
-
-
-/*@media screen and (min-width: 768px) {*/
-/*    .menu-navigation__link-style {*/
-/*        font-size: 18px;*/
-/*        line-height: 28px;*/
-/*        width: 100px;*/
-/*        height: 8px;*/
-/*    }*/
-/*}*/
+@media screen and (min-width: 768px) {
+    .menu-navigation__link-style {
+        margin: auto auto 90px auto;
+    }
+}

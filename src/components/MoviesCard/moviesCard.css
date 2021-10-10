@@ -1,6 +1,6 @@
 .movies-card {
     min-width: 320px;
-    margin-bottom: 13px;
+    margin-bottom: 17px;
     display: flex;
     flex-direction: column;
 }

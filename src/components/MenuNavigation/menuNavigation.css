@@ -8,11 +8,11 @@
 }
 
 .menu-navigation__container {
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     width: 320px;
-    height: 1024px;
+    height: 100%;
     z-index: 1;
     background-color:  #202020;
 }
@@ -20,7 +20,6 @@
 @media screen and (min-width: 768px) {
     .menu-navigation__container {
         width: 520px;
-        height: 1024px;
     }
 }
 
@@ -30,13 +29,13 @@
     flex-direction: column;
     margin: 144px auto 0 auto;
     text-align: center;
-    height: 591px;
+    height: 500px;
 }
 
 @media screen and (min-width: 768px) {
     .menu-navigation__group {
         margin: 160px auto 0 auto;
-        height: 782px;
+        height: 590px;
     }
 }
 

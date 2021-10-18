@@ -12,7 +12,7 @@
 @media screen and (min-width: 768px) {
     .profile__container {
         max-width: 410px;
-        margin-top: 233px;
+        margin-top: 100px;
     }
 }
 
@@ -33,16 +33,16 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
-    letter-spacing: 0.6px;
+    letter-spacing: 2.6px;
 }
 
 .profile__box {
     display: flex;
-    height: 15px;
+    height: 30px;
     justify-content: space-between;
     box-sizing: border-box;
     padding: 0 0 0 0;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border-top: solid 1px #424242;
 }
 
@@ -76,6 +76,10 @@
     width: 120px;
     background-color: #202020;
     border: 0;
+    color: #FFFFFF;
+    font-size: 11px;
+    line-height: 13px;
+    padding-top: 7px;
 }
 
 @media screen and (min-width: 768px) {
@@ -121,7 +125,7 @@
     color: #FFFFFF;
     background-color: #202020;
     border: 0;
-    margin-top: 351px;
+    margin-top: 300px;
     margin-bottom: 16px;
 }
 

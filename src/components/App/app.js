@@ -1,5 +1,5 @@
 import React from 'react';
-import {Route, Switch, useHistory} from "react-router-dom";
+import {Redirect, Route, Switch, useHistory} from "react-router-dom";
 import api from '../../utils/api';
 import '../../index.css';
 // import ProtectedRoute from "../ProtectedRoute/protectedRoute";
@@ -66,12 +66,23 @@ function App() {
 
     }, [])
 
+    function handleUpdateUser(data) {
+        api.editUserData(data, localStorage.token)
+            .then((data) => {
+                setCurrentUser(data);
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
 
-    function register(email, password, name) {
-        auth.register(email, password, name).then(
+
+
+function register(email, password, name) {
+        auth.register(name, email, password).then(
             () => {
                 setIsSuccess(true)
-                history.push('/movies');
+                history.push('/signin');
             })
             .catch(() => {
                 setIsSuccess(false)
@@ -79,23 +90,26 @@ function App() {
     }
 
     function login(email, password) {
+        console.log(email, password);
         auth.authorization(email, password).then(
             (data) => {
                 localStorage.setItem('token', data.token);
                 console.log(localStorage.getItem('token'))
                 setLoggedIn(true)
-                // history.push("/movies");
+                history.push("/movies");
             })
             .catch((err) => {
                 console.log(err)
             })
     }
 
+
     function signOut() {
         localStorage.removeItem("token");
         setLoggedIn(false);
         history.push('signin');
     }
+
 
 
 
@@ -117,7 +131,7 @@ function App() {
             </Route>
             <Route path ='/profile'>
                 <Header  loggedIn={loggedIn}/>
-                <Profile/>
+                <Profile handleUpdateUser={handleUpdateUser}  />
             </Route>
             <Route path ='/signin'>
                 <Login onLogin={login} onChekToken={checkToken}/>

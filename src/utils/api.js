@@ -15,6 +15,23 @@ class Api {
             .then(this._checkRes)
     }
 
+    editUserData(data, token) {
+        console.log(data)
+        return fetch(`${this._url}/users/me`, {
+            method: "PATCH",
+            headers: {
+                'Accept': 'application/json',
+                'Content-type': 'application/json',
+                Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                name: data.name,
+                email: data.email
+            })
+        })
+            .then(this._checkRes)
+    }
+
 
     _checkRes(res) {
         if (res.ok) {

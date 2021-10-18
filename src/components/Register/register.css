@@ -3,7 +3,7 @@
 }
 @media screen and (min-width: 768px) {
     .register {
-        margin-top: 241px;
+        margin-top: 65px;
     }
 }
 
@@ -66,9 +66,11 @@
 }
 
 .register__input {
-    width: 120px;
+    width: 387px;
     background-color: #202020;
     border: 0;
+    color: #FFFFFF;
+    margin-top: 10px;
 }
 
 .register__input::placeholder {

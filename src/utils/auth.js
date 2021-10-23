@@ -1,19 +1,26 @@
 // export const BASE_URL = 'https://api.diplom.zaxarov.nomoredomains.club'
 export const BASE_URL = 'http://localhost:3000'
 
+
+
 const checkRes = (res) => {
-    return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
+    return res.ok ? res.json() : Promise.reject(res.json())
 }
 
+/**
+ * Регистрация нового пользователя
+ * */
 export const register = (name,email,password) => {
-    return fetch(`${BASE_URL}/signup`, {
+    const requestResultPromise = fetch(`${BASE_URL}/signup`, {
         method: 'POST',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({email,name, password})
-    }).then((res) => checkRes(res))
+        body: JSON.stringify({name, email, password})
+    })
+
+    return requestResultPromise.then((res) => checkRes(res));
 }
 
 export const authorization = (email,password) => {

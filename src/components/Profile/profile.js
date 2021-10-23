@@ -24,7 +24,7 @@ function Profile({handleUpdateUser}) {
     }
 
     function handleSubmit(e) {
-       e.preventDefault()
+        e.preventDefault()
         handleUpdateUser({
             name,
             email: email
@@ -44,7 +44,7 @@ function Profile({handleUpdateUser}) {
                     <div className='profile__box profile__box-style'>
                         <p className='profile__input-name'>E-mail</p>
                         <input  autoComplete='off' className='profile__input' type='email' name='email'
-                               value={email || ''} placeholder={email}   onChange={changeEmail} required/>
+                                value={email || ''} placeholder={email}   onChange={changeEmail} required/>
                     </div>
                     <button className='profile__subtitle' type="submit">Редактировать</button>
                     <Link className='profile__exit' to='/signin'>Выйти из аккаунта</Link>

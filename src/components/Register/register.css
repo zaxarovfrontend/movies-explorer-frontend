@@ -135,6 +135,11 @@
     }
 }
 
+
+.register__button:disabled{
+    background-color: #073042;
+}
+
 .register__footer {
     display: flex;
     margin: 14px 0 0 0;

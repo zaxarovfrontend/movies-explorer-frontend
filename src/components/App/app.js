@@ -18,18 +18,24 @@ import * as auth from "../../utils/auth";
 
 import {CurrentUserContext} from '../Context/CurrentUserContext';
 
-
-
-function App() {
+function App(props) {
     const [currentUser, setCurrentUser] = React.useState({});
-
-
     //Авторизация
     const [loggedIn, setLoggedIn] = React.useState(true);
     const [userEmail, setUserEmail] = React.useState('');
-    const [isSuccess, setIsSuccess] = React.useState(false);
-    const history = useHistory();
 
+    const [formError, setFormError] = React.useState({ registerError: false, errorMessage: "" });
+
+    function clearFormError() {
+        setFormError({
+            registerError: false,
+            errorMessage: ""
+        })
+    }
+
+
+    // const [isSuccess, setIsSuccess] = React.useState(false);
+    const history = useHistory();
 
     const checkToken = React.useCallback(() => {
         const token = localStorage.getItem('token');
@@ -76,16 +82,20 @@ function App() {
             })
     }
 
-
-
-function register(email, password, name) {
+    function register(name, email, password) {
         auth.register(name, email, password).then(
-            () => {
-                setIsSuccess(true)
+            (res) => {
                 history.push('/signin');
+
+                clearFormError();
             })
-            .catch(() => {
-                setIsSuccess(false)
+            .catch((error) => {
+                error.then((errorJson) => {
+                    setFormError({
+                        registerError: true,
+                        errorMessage: errorJson.message
+                    });
+                })
             })
     }
 
@@ -107,43 +117,44 @@ function register(email, password, name) {
     function signOut() {
         localStorage.removeItem("token");
         setLoggedIn(false);
-        history.push('signin');
+        // history.push('signin');
     }
-
-
-
 
     return (
         <CurrentUserContext.Provider value={currentUser}>
-        <div className="page">
-        <Switch>
-            <Route exact path ='/'>
-                <Header  loggedIn={loggedIn} userEmail={userEmail} onSignOut={signOut}/>
-                <Main />
-            </Route>
-            <Route path ='/movies'>
-                <Header  loggedIn={loggedIn}/>
-                <Movies />
-            </Route>
-            <Route path ='/saved-movies'>
-                <Header  loggedIn={loggedIn}/>
-                <SavedMovies/>
-            </Route>
-            <Route path ='/profile'>
-                <Header  loggedIn={loggedIn}/>
-                <Profile handleUpdateUser={handleUpdateUser}  />
-            </Route>
-            <Route path ='/signin'>
-                <Login onLogin={login} onChekToken={checkToken}/>
-            </Route>
-            <Route path ='/signup'>
-                <Register onRegister={register}/>
-            </Route>
-            <Route path ='*'>
-                <NotFound/>
-            </Route>
-        </Switch>
-        </div>
+            <div className="page">
+                <Switch>
+                    <Route exact path ='/'>
+                        <Header  loggedIn={loggedIn} userEmail={userEmail} onSignOut={signOut}/>
+                        <Main />
+                    </Route>
+                    <Route path ='/movies'>
+                        <Header  loggedIn={loggedIn}/>
+                        <Movies />
+                    </Route>
+                    <Route path ='/saved-movies'>
+                        <Header  loggedIn={loggedIn}/>
+                        <SavedMovies/>
+                    </Route>
+                    <Route path ='/profile'>
+                        <Header  loggedIn={loggedIn}/>
+                        <Profile handleUpdateUser={handleUpdateUser}  />
+                    </Route>
+                    <Route path ='/signin'>
+                        <Login onLogin={login} onChekToken={checkToken}/>
+                    </Route>
+                    <Route path ='/signup'>
+                        <Register
+                            onRegister={register}
+                            formError={ formError }
+                            clearFormError={clearFormError}
+                        />
+                    </Route>
+                    <Route path ='*'>
+                        <NotFound/>
+                    </Route>
+                </Switch>
+            </div>
         </CurrentUserContext.Provider>
     );
 }

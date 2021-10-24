@@ -47,6 +47,7 @@ function SearchForm({ setMovies }) {
                         type="text"
                         placeholder="Фильм"
                         required
+                        autoComplete='off'
                     />
                     <button className='search-form__button' type="submit"></button>
                 </div>

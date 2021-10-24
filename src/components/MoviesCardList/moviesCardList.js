@@ -20,7 +20,7 @@ function MoviesCardList({ movies }) {
                         })
                     }
                 </div>
-                {/*<button className='movies-cardList__button'>Ещё</button>*/}
+                <button className='movies-cardList__button'>Ещё</button>
             </div>
 
         </section>

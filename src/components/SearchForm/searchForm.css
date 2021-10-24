@@ -15,10 +15,6 @@
     }
 }
 
-
-
-
-
 .search-form__container {
     max-width: 292px;
     margin: 0 auto;
@@ -42,20 +38,21 @@
 
 
 .search-form__input {
-    width: 252px;
+    width: 240px;
     background-color: #202020;
     border: 0;
+    color: #FFFFFF;
 }
 
 @media screen and (min-width: 768px) {
     .search-form__input {
-        width: 662px;
+        width: 640px;
     }
 }
 
 @media screen and (min-width: 1280px) {
     .search-form__input {
-        width: 1112px;
+        width: 1080px;
     }
 }
 

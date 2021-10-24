@@ -29,8 +29,23 @@
 
 
 .movies-img {
-    max-width: 100%;
+    width: 300px;
+    height: 168px;
     border-radius: 10px;
+}
+
+@media screen and (min-width: 768px) {
+    .movies-img {
+        width: 339px;
+        height: 190px;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .movies-img {
+        width: 364px;
+        height: 203px;
+    }
 }
 
     .movies-card__group {

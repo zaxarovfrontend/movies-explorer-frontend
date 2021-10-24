@@ -35,14 +35,25 @@ export const authorization = (email,password) => {
 }
 
 export const checkToken = (token) => {
-    return fetch(`${BASE_URL}/movies`, {
-        method: 'GET',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
-        },
+        // return fetch(`${BASE_URL}/movies`, {
+        //     method: 'GET',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json',
+        //         Authorization: `Bearer ${token}`
+        //     },
+        //
+        // }).then((res) => checkRes(res))
 
-    }).then((res) => checkRes(res))
+         const pr = fetch(`${BASE_URL}/users/me`, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`,
+            },
+        });
+
+         return pr;
 }
 

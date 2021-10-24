@@ -16,7 +16,7 @@ function MoviesCard(props) {
                         <button className='movies-card__delete'></button>
                     )}
                 </div>
-                <p className='movies-card__subtitle'>{props.subtitle}</p>
+                <p className='movies-card__subtitle'>{props.duration}</p>
             </div>
         </section>
     )

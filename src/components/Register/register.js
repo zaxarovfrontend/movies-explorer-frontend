@@ -14,17 +14,10 @@ function Register(props) {
         handleChange,
         errors,
         isValid,
-        resetForm
+        // resetForm
     } = useFormWithValidation(props.clearFormError);
 
     // resetForm(values, errors, isValid);
-    console.dir({
-        values,
-        errors,
-        isValid,
-        props,
-    })
-
 
     // function changeName(evt) {
     //     setName(evt.target.value);
@@ -90,7 +83,7 @@ function Register(props) {
                             name='password'
                             value={values.password}
                             onChange={handleChange}
-                            className='register__input-name'
+                            // className='register__input-name'
                             placeholder="password"
                             required
                         />

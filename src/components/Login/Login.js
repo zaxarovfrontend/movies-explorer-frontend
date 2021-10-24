@@ -1,6 +1,6 @@
 import React from 'react';
 import '../Register/register.css';
-import {CurrentUserContext} from "../Context/CurrentUserContext";
+// import {CurrentUserContext} from "../Context/CurrentUserContext";
 import {Link} from "react-router-dom";
 import LogoHeader from "../LogoHeader/logo";
 

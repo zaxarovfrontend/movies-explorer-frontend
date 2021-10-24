@@ -1,19 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import SearchForm from "../SearchForm/searchForm";
-import Preloader from "../Preloader/preloader";
 import MoviesCardList from "../MoviesCardList/moviesCardList";
 import Footer from "../Footer/footer";
-
+/*<Preloader/>*/
 
 function Movies() {
+    const [movies, setMovies] = useState([]);
+
     return(
         <main className='main'>
-        <SearchForm/>
+             <SearchForm setMovies={ setMovies }/>
             {/*<Preloader/>*/}
-      <MoviesCardList/>
-            <div className='movies-cardList__container'>
-            <button className='movies-cardList__button'>Ещё</button>
-            </div>
+            <MoviesCardList movies={ movies }/>
+
+            {/*<button className='movies-cardList__button'>*/}
+            {/*    Ещё*/}
+            {/*</button>*/}
+
            <Footer/>
         </main>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Redirect, Route, Switch, useHistory} from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import api from '../../utils/api';
 import '../../index.css';
 // import ProtectedRoute from "../ProtectedRoute/protectedRoute";
@@ -39,12 +39,13 @@ function App(props) {
 
     const checkToken = React.useCallback(() => {
         const token = localStorage.getItem('token');
-        console.log(token)
         auth.checkToken(token).then(
             (data) => {
-                setLoggedIn(true);
-                setUserEmail(data.email);
-                history.push('/movies');
+                data.json().then((body) => {
+                    setLoggedIn(true);
+                    setUserEmail(body.email);
+                    history.push('/movies');
+                })
             })
             .catch((err) => {
                     console.log(err);
@@ -58,7 +59,6 @@ function App(props) {
             checkToken();
         }
     }, [checkToken]);
-
 
 
     //запрос данных пользователя

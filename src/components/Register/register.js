@@ -36,7 +36,6 @@ function Register(props) {
         props.onRegister(values.name, values.email, values.password);
     }
 
-
     return (
         <section className='register'>
             <div className='register__container'>
@@ -56,7 +55,7 @@ function Register(props) {
                             onChange={handleChange}
                             type="text"
                             name='name'
-                            placeholder='name'
+                            // placeholder='name'
                             pattern="^[A-Za-zА-ЯЁа-яё]+$"
                             required
                         />
@@ -70,7 +69,7 @@ function Register(props) {
                             name='email'
                             value={values.email}
                             onChange={handleChange}
-                            placeholder='email'
+                            // placeholder='email'
                             required
                         />
                     </div>
@@ -79,12 +78,12 @@ function Register(props) {
                         <input
                             autoComplete='off'
                             className='register__input'
-                            type='password'
                             name='password'
                             value={values.password}
                             onChange={handleChange}
                             // className='register__input-name'
-                            placeholder="password"
+                            // placeholder="password"
+                            type='password'
                             required
                         />
                     </div>

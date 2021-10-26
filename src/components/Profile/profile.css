@@ -129,6 +129,11 @@
     margin-bottom: 16px;
 }
 
+.profile__subtitle:disabled {
+    opacity: 0.5;
+}
+
+
 @media screen and (min-width: 768px) {
     .profile__subtitle {
         margin-top: 182px;

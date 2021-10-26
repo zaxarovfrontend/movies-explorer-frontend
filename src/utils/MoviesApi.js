@@ -5,6 +5,10 @@ export const getAllMovies = () => {
 
     return resPromise
         .then((response) => {
+            if (!response.ok) {
+              return Promise.reject();
+            }
+
             const bodyPromise = response.json();
 
             return bodyPromise
@@ -17,5 +21,6 @@ export const getAllMovies = () => {
         })
         .catch((error) => {
             console.log('При запросе информации о фильмах возникла ошибка: ', error);
+            return Promise.reject();
         })
 }

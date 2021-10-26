@@ -77,16 +77,21 @@ function App(props) {
             .then((data) => {
                 setCurrentUser(data);
             })
-            .catch((err) => {
-                console.log(err)
-            })
+          .catch((error) => {
+              console.log(error)
+              error.then((errorJson) => {
+                  setFormError({
+                      registerError: true,
+                      errorMessage: errorJson.message
+                  });
+              })
+          })
     }
 
     function register(name, email, password) {
         auth.register(name, email, password).then(
             (res) => {
                 history.push('/signin');
-
                 clearFormError();
             })
             .catch((error) => {
@@ -108,9 +113,14 @@ function App(props) {
                 setLoggedIn(true)
                 history.push("/movies");
             })
-            .catch((err) => {
-                console.log(err)
-            })
+          .catch((error) => {
+              error.then((errorJson) => {
+                  setFormError({
+                      registerError: true,
+                      errorMessage: errorJson.message
+                  });
+              })
+          })
     }
 
 
@@ -138,10 +148,16 @@ function App(props) {
                     </Route>
                     <Route path ='/profile'>
                         <Header  loggedIn={loggedIn}/>
-                        <Profile handleUpdateUser={handleUpdateUser}  />
+                        <Profile
+                          handleUpdateUser={handleUpdateUser}
+                          formError={ formError }
+                          clearFormError={clearFormError}/>
                     </Route>
                     <Route path ='/signin'>
-                        <Login onLogin={login} onChekToken={checkToken}/>
+                        <Login onLogin={login}
+                               formError={ formError }
+                               clearFormError={clearFormError}
+                        />
                     </Route>
                     <Route path ='/signup'>
                         <Register

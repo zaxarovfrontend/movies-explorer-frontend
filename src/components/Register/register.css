@@ -137,7 +137,8 @@
 
 
 .register__button:disabled{
-    background-color: #073042;
+    background-color: #A0A0A0;
+    opacity: 0.6;
 }
 
 .register__footer {

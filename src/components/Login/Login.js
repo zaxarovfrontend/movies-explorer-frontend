@@ -1,54 +1,78 @@
 import React from 'react';
 import '../Register/register.css';
 // import {CurrentUserContext} from "../Context/CurrentUserContext";
-import {Link} from "react-router-dom";
-import LogoHeader from "../LogoHeader/logo";
-
+import { Link } from 'react-router-dom';
+import LogoHeader from '../LogoHeader/logo';
+import { useFormWithValidation } from '../../Validation/UseForm';
 
 function Login(props) {
-    const[email, setEmail] = React.useState('')
-    const [password, setPassword] = React.useState('')
+  console.log(props)
+  const {
+    values,
+    handleChange,
+    isValid,
+    // resetForm
+  } = useFormWithValidation(props.clearFormError);
 
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    props.onLogin(values.email, values.password);
+  }
 
-    function changeEmail(evt) {
-        setEmail(evt.target.value);
-    }
+  return (
+    <section className="login">
+      <div className="register__container">
+        <LogoHeader/>
+        <h1 className="register__title">Добро пожаловать!</h1>
+        <form className="register__form"
+              onSubmit={handleSubmit}
+              type="search"
+        >
 
-    function changePassword(evt) {
-        setPassword(evt.target.value);
-    }
+          <div className="register__box">
+            <p className="register__input-name">E-mail</p>
+            <input className="register__input"
+                   type="email"
+                   name="email"
+                   value={values.email}
+              // placeholder={props.email}
+                   onChange={handleChange}
+                   required/>
 
-    function handleSubmit(evt) {
-        evt.preventDefault()
-        props.onLogin(email, password)
-    }
+          </div>
+          <div className="register__box">
+            <p className="register__input-name">Пароль</p>
+            <input
+              className="register__input"
+              type="password"
+              name="password"
+              value={values.password}
+              onChange={handleChange}
+              // placeholder={props.password}
+              required/>
+          </div>
 
+          {
+            props.formError.registerError && (
+              <span className='register__subtitle'>
+                                    { props.formError.errorMessage || "Что-то пошло не так..." }
+                                </span>
+            )
+          }
 
-    return (
-        <section className='login'>
-            <div className='register__container'>
-                <LogoHeader/>
-                <h1 className='register__title'>Добро пожаловать!</h1>
-                <form className='register__form'  onSubmit={handleSubmit}>
-                    <div className='register__box'>
-                        <p className='register__input-name'>E-mail</p>
-                        <input autoComplete='off' className='register__input' type='email' name='email'
-                               value={email || ''} placeholder={props.email} onChange={changeEmail} required/>
-                    </div>
-                    <div className='register__box'>
-                        <p className='register__input-name'>Пароль</p>
-                        <input autoComplete='off' className='register__input' type='password' name='password'
-                               value={password} onChange={changePassword} placeholder={props.password} required/>
-                    </div>
-                    <button className='register__button' type='submit'>Войти</button>
-                </form>
-                <div className='register__footer'>
-                    <p className='register__text'>Еще не зарегистрированы?</p>
-                    <Link className='register__link' to='/signup'>Регистрация</Link>
-                </div>
-            </div>
-        </section>
-    )
+          <button className="register__button" type="submit"
+                  disabled={!isValid}
+          >
+            Войти
+          </button>
+        </form>
+        <div className="register__footer">
+          <p className="register__text">Еще не зарегистрированы?</p>
+          <Link className="register__link" to="/signup">Регистрация</Link>
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export default Login;

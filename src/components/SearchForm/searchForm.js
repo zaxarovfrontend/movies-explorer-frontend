@@ -8,7 +8,7 @@ import { getAllMovies } from '../../utils/MoviesApi';
 
 import { complexMoviesFilter } from '../../utils/movies-filter';
 
-function SearchForm({ setMovies }) {
+function SearchForm({ setMovies, setPreloaderStatus, setSearchProblemMessage }) {
     const { values, handleChange } = useForm();
     const [shortMoviesFilter, setShortMoviesFilter] = useState(false);
 
@@ -20,17 +20,37 @@ function SearchForm({ setMovies }) {
         if (moviesFromLocalStorageString) {
             const parsedMovies = JSON.parse(moviesFromLocalStorageString);
             const filteredMovies = complexMoviesFilter(parsedMovies, values.search, shortMoviesFilter);
+
+            if (filteredMovies.length === 0) {
+                setSearchProblemMessage('Ничего не найдено');
+            }
+
             setMovies(filteredMovies);
         } else {
+            // Показываем прелоадер
+            setPreloaderStatus(true);
+
             const resPromise = getAllMovies();
             resPromise
                 .then((movies) => {
+                    // Прячем прелоадер
+                    setPreloaderStatus(false);
+
                     localStorage.setItem('movies', JSON.stringify(movies));
                     const filteredMovies = complexMoviesFilter(movies, values.search, shortMoviesFilter);
+
+                    if (filteredMovies.length === 0) {
+                        setSearchProblemMessage('Ничего не найдено');
+                    }
+
                     setMovies(filteredMovies);
                 })
                 .catch((error) => {
-                    console.log('Что-то пошло не так...', error);
+                  console.log('2222')
+                    // Прячем прелоадер
+
+                    setPreloaderStatus(false);
+                    setSearchProblemMessage('Что то пошло не так!');
                 })
         }
     }

@@ -25,7 +25,7 @@ function SearchForm({ setMovies, setPreloaderStatus, setSearchProblemMessage }) 
                 setSearchProblemMessage('Ничего не найдено');
             }
 
-            setMovies(filteredMovies);
+            setMovies( filteredMovies);
         } else {
             // Показываем прелоадер
             setPreloaderStatus(true);

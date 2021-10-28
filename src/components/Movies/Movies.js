@@ -1,14 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import SearchForm from "../SearchForm/searchForm";
 import MoviesCardList from "../MoviesCardList/moviesCardList";
 import Footer from "../Footer/footer";
 import Preloader from '../Preloader/preloader';
-/*<Preloader/>*/
+import { getMoviesStartCount } from '../../utils/getMoviesStartCount';
 
 function Movies() {
-    const [movies, setMovies] = useState([]);
     const [isPreloaderActive, setPreloaderStatus] = useState(false);
     const [searchProblemMessage, setSearchProblemMessage] = useState('');
+    const [moviesStartCount, setMoviesStartCount] = useState(getMoviesStartCount());
+    const [allMovies, setMovies] = useState([]);
+
+    const memoizedCallback = useCallback(
+      () => {
+        function setNewCardsByResize() {
+          setMoviesStartCount(getMoviesStartCount())
+        }
+
+        window.addEventListener("resize", setNewCardsByResize);
+
+        return () => {
+          window.removeEventListener("resize", setNewCardsByResize);
+        }
+      },
+      [],
+    );
+
+    useEffect(memoizedCallback);
 
     return(
         <main className='main'>
@@ -23,8 +41,9 @@ function Movies() {
               )
             }
             <MoviesCardList
-              movies={ movies }
+              movies={ allMovies }
               searchProblemMessage={ searchProblemMessage }
+              moviesStartCount={ moviesStartCount }
             />
 
             {/*<button className='movies-cardList__button'>*/}

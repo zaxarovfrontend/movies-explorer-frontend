@@ -50,7 +50,9 @@ function SearchForm({ setMovies, setPreloaderStatus, setSearchProblemMessage }) 
                     // Прячем прелоадер
 
                     setPreloaderStatus(false);
-                    setSearchProblemMessage('Что то пошло не так!');
+                    setSearchProblemMessage('Во время запроса произошла ошибка. Возможно,' +
+                      ' проблема с соединением или сервер недоступен. ' +
+                      'Подождите немного и попробуйте ещё раз');
                 })
         }
     }

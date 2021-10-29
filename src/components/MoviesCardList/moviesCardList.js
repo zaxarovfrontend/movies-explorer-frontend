@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import MoviesCard from "../MoviesCard/moviesCard";
 import './moviesCardList.css';
 import { useForm } from '../../Validation/UseForm';
@@ -8,8 +8,8 @@ import { useForm } from '../../Validation/UseForm';
 function MoviesCardList({ movies, searchProblemMessage, moviesStartCount }) { // [] 12
    const [partOfMovies, setPartOfMovies] = useState([]);
 
-    const memoizedCallback = useCallback(() => {
-        const slicedMovies = movies.slice(0, moviesStartCount - 1);
+    useEffect(() => {
+        const slicedMovies = movies.slice(0, moviesStartCount);
       console.log('slicedMovies.length', slicedMovies.length)
       console.log('partOfMovies.length', partOfMovies.length)
         if (slicedMovies.length !== partOfMovies.length) {
@@ -19,7 +19,6 @@ function MoviesCardList({ movies, searchProblemMessage, moviesStartCount }) { //
         }
     }, [movies])
 
-    useEffect(memoizedCallback);
 
     // console.log('partOfMovies', partOfMovies)
 
@@ -28,7 +27,7 @@ function MoviesCardList({ movies, searchProblemMessage, moviesStartCount }) { //
             <div className='movies-cardList__container'>
                 <div className='movies-cardList__card'>
                     {
-                      partOfMovies.length ? movies.map((movie) => {
+                      partOfMovies.length ?  partOfMovies.map((movie) => {
                             return (
                                 <MoviesCard
                                     key={ movie.id }
@@ -37,7 +36,8 @@ function MoviesCardList({ movies, searchProblemMessage, moviesStartCount }) { //
                                     duration={ movie.duration }
                                 />
                             )
-                      }) : (searchProblemMessage ? (<span>{ searchProblemMessage }</span>) : null)
+
+                      }) : (searchProblemMessage ? (<span className='movies-cardList__error'>{ searchProblemMessage }</span>) : null)
                     }
                 </div>
                 <button className='movies-cardList__button'>Ещё</button>

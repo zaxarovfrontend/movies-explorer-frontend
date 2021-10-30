@@ -3,12 +3,23 @@ import Footer from "../Footer/footer";
 import SearchForm from "../SearchForm/searchForm";
 import MoviesCardList from "../MoviesCardList/moviesCardList";
 
-function SavedMovies() {
+function SavedMovies(props) {
+    const { likedMoviesIds, updateLikedMoviesIds } = props;
+    const moviesFromLocalStorageString = JSON.parse(localStorage.getItem('movies') || '[]');
+
+    const onlyLikedMovies = moviesFromLocalStorageString.filter((movie) => { // [{id: 5}]
+      return likedMoviesIds.indexOf(movie.id) !== -1;  // [5, 14].indexOf(5) = 0
+    })
+
+   console.log('onlyLikedMovies', onlyLikedMovies)
+
     return (
         <main className='main'>
-            <SearchForm/>
+            <SearchForm />
             <MoviesCardList
-              movies={ [] }
+              movies={ onlyLikedMovies }
+              updateLikedMoviesIds={ updateLikedMoviesIds }
+              likedMoviesIds={ likedMoviesIds }
             />
             <Footer/>
         </main>

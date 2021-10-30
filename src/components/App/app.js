@@ -161,7 +161,10 @@ function App(props) {
                     </Route>
                     <Route path ='/saved-movies'>
                         <Header  loggedIn={loggedIn}/>
-                        <SavedMovies/>
+                        <SavedMovies
+                          likedMoviesIds={likedMoviesIds}
+                          updateLikedMoviesIds={updateLikedMoviesIds}
+                        />
                     </Route>
                     <Route path ='/profile'>
                         <Header  loggedIn={loggedIn}/>

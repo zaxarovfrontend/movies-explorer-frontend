@@ -21,7 +21,10 @@ function MoviesCard(props) {
                           onClick={ () => { updateLikedMoviesIds(moviesId) } }
                         />
                     ) : (
-                        <button className='movies-card__delete'></button>
+                        <button
+                          className='movies-card__delete'
+                          onClick={ () => { updateLikedMoviesIds(moviesId) } }
+                        />
                     )}
                 </div>
                 <p className='movies-card__subtitle'>{props.duration}</p>

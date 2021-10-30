@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import MoviesCard from "../MoviesCard/moviesCard";
 import './moviesCardList.css';
 
-function MoviesCardList({ movies, searchProblemMessage, moviesStartParams }) { // [] 12
+function MoviesCardList({ movies, searchProblemMessage, moviesStartParams }) {
     const [partOfMovies, setPartOfMovies] = useState([]);
 
     useEffect(() => {
@@ -37,7 +37,7 @@ function MoviesCardList({ movies, searchProblemMessage, moviesStartParams }) { /
                     }
                 </div>
                {
-                 partOfMovies.length ? (
+                 (partOfMovies.length && (movies.length !== partOfMovies.length)) ? (
                    <button
                      className='movies-cardList__button'
                      onClick={ addMovies }

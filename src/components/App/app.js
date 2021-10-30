@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Route, Switch, useHistory } from "react-router-dom";
 import api from '../../utils/api';
 import '../../index.css';
-// import ProtectedRoute from "../ProtectedRoute/protectedRoute";
+import ProtectedRoute from "../ProtectedRoute/protectedRoute";
 import Main from "../Main/main";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/savedMovies";
@@ -53,28 +53,29 @@ function App(props) {
     // const [isSuccess, setIsSuccess] = React.useState(false);
     const history = useHistory();
 
-    const checkToken = React.useCallback(() => {
+    React.useEffect(() => {
         const token = localStorage.getItem('token');
         auth.checkToken(token).then(
             (data) => {
                 data.json().then((body) => {
                     setLoggedIn(true);
                     setUserEmail(body.email);
-                    history.push('/movies');
+                    // history.push('/movies');
                 })
             })
             .catch((err) => {
+                    setLoggedIn(false);
                     console.log(err);
                 }
             );
     }, [history]);
 
-    React.useEffect(() => {
-        const token = localStorage.getItem('token');
-        if (token) {
-            checkToken();
-        }
-    }, [checkToken]);
+    // React.useEffect(() => {
+    //     const token = localStorage.getItem('token');
+    //     if (token) {
+    //         checkToken();
+    //     }
+    // }, [checkToken]);
 
 
     //запрос данных пользователя
@@ -121,7 +122,6 @@ function App(props) {
     }
 
     function login(email, password) {
-        console.log(email, password);
         auth.authorization(email, password).then(
             (data) => {
                 localStorage.setItem('token', data.token);
@@ -150,11 +150,11 @@ function App(props) {
         <CurrentUserContext.Provider value={currentUser}>
             <div className="page">
                 <Switch>
-                    <Route exact path ='/'>
+                    <Route exact path='/'>
                         <Header  loggedIn={loggedIn} userEmail={userEmail} onSignOut={signOut}/>
                         <Main />
                     </Route>
-                    <Route path ='/movies'>
+                    <ProtectedRoute path='/movies' loggedIn={ loggedIn }>
                         <Header  loggedIn={loggedIn}/>
                         <Movies
                           updateLikedMoviesIds={updateLikedMoviesIds}
@@ -162,37 +162,38 @@ function App(props) {
                           searchProblemMessage={ searchProblemMessage }
                           setSearchProblemMessage={ setSearchProblemMessage }
                         />
-                    </Route>
-                    <Route path ='/saved-movies'>
-                        <Header  loggedIn={loggedIn}/>
-                        <SavedMovies
-                          likedMoviesIds={likedMoviesIds}
-                          updateLikedMoviesIds={updateLikedMoviesIds}
-                          searchProblemMessage={ searchProblemMessage }
-                          setSearchProblemMessage={ setSearchProblemMessage }
-                        />
-                    </Route>
-                    <Route path ='/profile'>
+                    </ProtectedRoute>
+                    <ProtectedRoute loggedIn={ loggedIn } path='/saved-movies'>
+                            <Header loggedIn={loggedIn} />
+                            <SavedMovies
+                              likedMoviesIds={likedMoviesIds}
+                              updateLikedMoviesIds={updateLikedMoviesIds}
+                              searchProblemMessage={ searchProblemMessage }
+                              setSearchProblemMessage={ setSearchProblemMessage }
+                            />
+                    </ProtectedRoute>
+                    <ProtectedRoute path='/profile' loggedIn={loggedIn}>
                         <Header  loggedIn={loggedIn}/>
                         <Profile
                           handleUpdateUser={handleUpdateUser}
                           formError={ formError }
+                          signOut={ signOut }
                           clearFormError={clearFormError}/>
-                    </Route>
-                    <Route path ='/signin'>
+                    </ProtectedRoute>
+                    <Route path='/signin'>
                         <Login onLogin={login}
                                formError={ formError }
                                clearFormError={clearFormError}
                         />
                     </Route>
-                    <Route path ='/signup'>
+                    <Route path='/signup'>
                         <Register
                             onRegister={register}
                             formError={ formError }
                             clearFormError={clearFormError}
                         />
                     </Route>
-                    <Route path ='*'>
+                    <Route path='*'>
                         <NotFound/>
                     </Route>
                 </Switch>

@@ -81,7 +81,7 @@ function Profile(props) {
           >
                   Редактировать
           </button>
-          <Link className="profile__exit" to="/signin">
+          <Link className="profile__exit" to="/signin" onClick={ props.signOut }>
                   Выйти из аккаунта
           </Link>
         </form>

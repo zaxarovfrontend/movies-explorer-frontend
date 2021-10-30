@@ -3,18 +3,18 @@ import SearchForm from "../SearchForm/searchForm";
 import MoviesCardList from "../MoviesCardList/moviesCardList";
 import Footer from "../Footer/footer";
 import Preloader from '../Preloader/preloader';
-import { getMoviesStartCount } from '../../utils/getMoviesStartCount';
+import { getParamsByScreenWidth } from '../../utils/getParamsByScreenWidth';
 
 function Movies() {
     const [isPreloaderActive, setPreloaderStatus] = useState(false);
     const [searchProblemMessage, setSearchProblemMessage] = useState('');
-    const [moviesStartCount, setMoviesStartCount] = useState(getMoviesStartCount());
+    const [moviesStartParams, setMoviesStartParams] = useState(getParamsByScreenWidth());
     const [allMovies, setMovies] = useState([]);
 
     const memoizedCallback = useCallback(
       () => {
         function setNewCardsByResize() {
-          setMoviesStartCount(getMoviesStartCount())
+          setMoviesStartParams(getParamsByScreenWidth())
         }
 
         window.addEventListener("resize", setNewCardsByResize);
@@ -43,7 +43,7 @@ function Movies() {
             <MoviesCardList
               movies={ allMovies }
               searchProblemMessage={ searchProblemMessage }
-              moviesStartCount={ moviesStartCount }
+              moviesStartParams={ moviesStartParams }
             />
 
             {/*<button className='movies-cardList__button'>*/}

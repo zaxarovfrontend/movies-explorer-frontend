@@ -1,26 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import MoviesCard from "../MoviesCard/moviesCard";
 import './moviesCardList.css';
-import { useForm } from '../../Validation/UseForm';
 
-// window.x = [];
-
-function MoviesCardList({ movies, searchProblemMessage, moviesStartCount }) { // [] 12
-   const [partOfMovies, setPartOfMovies] = useState([]);
+function MoviesCardList({ movies, searchProblemMessage, moviesStartParams }) { // [] 12
+    const [partOfMovies, setPartOfMovies] = useState([]);
 
     useEffect(() => {
-        const slicedMovies = movies.slice(0, moviesStartCount);
-      console.log('slicedMovies.length', slicedMovies.length)
-      console.log('partOfMovies.length', partOfMovies.length)
+        const slicedMovies = movies.slice(0, moviesStartParams.moviesStartCount);
+
         if (slicedMovies.length !== partOfMovies.length) {
-             // window.x.push(movies)
-          console.log('slicedMovies', slicedMovies)
             setPartOfMovies(slicedMovies);
         }
     }, [movies])
 
-
-    // console.log('partOfMovies', partOfMovies)
+    const addMovies = () => {
+      const slicedMovies = movies.slice(0, partOfMovies.length + moviesStartParams.addMoviesCount);
+      setPartOfMovies(slicedMovies);
+    }
 
     return (
         <section className='movies-cardList'>
@@ -40,9 +36,17 @@ function MoviesCardList({ movies, searchProblemMessage, moviesStartCount }) { //
                       }) : (searchProblemMessage ? (<span className='movies-cardList__error'>{ searchProblemMessage }</span>) : null)
                     }
                 </div>
-                <button className='movies-cardList__button'>Ещё</button>
+               {
+                 partOfMovies.length ? (
+                   <button
+                     className='movies-cardList__button'
+                     onClick={ addMovies }
+                   >
+                     Ещё
+                   </button>
+                 ) : null
+               }
             </div>
-
         </section>
     )
 }

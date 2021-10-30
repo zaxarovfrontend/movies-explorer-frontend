@@ -7,7 +7,9 @@ function SavedMovies() {
     return (
         <main className='main'>
             <SearchForm/>
-            <MoviesCardList/>
+            <MoviesCardList
+              movies={ [] }
+            />
             <Footer/>
         </main>
     )

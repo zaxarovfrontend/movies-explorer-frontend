@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import SearchForm from "../SearchForm/searchForm";
-import MoviesCardList from "../MoviesCardList/moviesCardList";
+import MoviesCardListWrapper from "../MoviesCardListWrapper/MoviesCardListWrapper";
 import Footer from "../Footer/footer";
 import Preloader from '../Preloader/preloader';
 import { getParamsByScreenWidth } from '../../utils/getParamsByScreenWidth';
 
-function Movies() {
+function Movies(props) {
     const [isPreloaderActive, setPreloaderStatus] = useState(false);
     const [searchProblemMessage, setSearchProblemMessage] = useState('');
     const [moviesStartParams, setMoviesStartParams] = useState(getParamsByScreenWidth());
@@ -40,15 +40,13 @@ function Movies() {
                 <Preloader />
               )
             }
-            <MoviesCardList
+            <MoviesCardListWrapper
               movies={ allMovies }
               searchProblemMessage={ searchProblemMessage }
               moviesStartParams={ moviesStartParams }
+              updateLikedMoviesIds={ props.updateLikedMoviesIds }
+              likedMoviesIds={ props.likedMoviesIds }
             />
-
-            {/*<button className='movies-cardList__button'>*/}
-            {/*    Ещё*/}
-            {/*</button>*/}
 
            <Footer/>
         </main>

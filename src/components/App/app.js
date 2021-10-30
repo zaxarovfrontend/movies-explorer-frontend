@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Route, Switch, useHistory } from "react-router-dom";
 import api from '../../utils/api';
 import '../../index.css';
@@ -15,16 +15,31 @@ import Header from "../Header/header";
 
 import * as auth from "../../utils/auth";
 
-
 import {CurrentUserContext} from '../Context/CurrentUserContext';
 
 function App(props) {
-    const [currentUser, setCurrentUser] = React.useState({});
+    const [currentUser, setCurrentUser] = useState({});
     //Авторизация
-    const [loggedIn, setLoggedIn] = React.useState(true);
-    const [userEmail, setUserEmail] = React.useState('');
+    const [loggedIn, setLoggedIn] = useState(true);
+    const [userEmail, setUserEmail] = useState('');
 
-    const [formError, setFormError] = React.useState({ registerError: false, errorMessage: "" });
+    const [formError, setFormError] = useState({ registerError: false, errorMessage: "" });
+
+    const [likedMoviesIds, setLikedMoviesIds] = useState([]); // [15, 4 ,5]
+
+    const updateLikedMoviesIds = (id) => {
+        let tempArr = [...likedMoviesIds];
+
+        if (tempArr.indexOf(id) === -1) {
+            tempArr.push(id);
+        } else {
+            tempArr = tempArr.filter((item) => {
+                return item !== id;
+            })
+        }
+
+        setLikedMoviesIds(tempArr)
+    }
 
     function clearFormError() {
         setFormError({
@@ -32,7 +47,6 @@ function App(props) {
             errorMessage: ""
         })
     }
-
 
     // const [isSuccess, setIsSuccess] = React.useState(false);
     const history = useHistory();
@@ -140,7 +154,10 @@ function App(props) {
                     </Route>
                     <Route path ='/movies'>
                         <Header  loggedIn={loggedIn}/>
-                        <Movies />
+                        <Movies
+                          updateLikedMoviesIds={updateLikedMoviesIds}
+                          likedMoviesIds={ likedMoviesIds}
+                        />
                     </Route>
                     <Route path ='/saved-movies'>
                         <Header  loggedIn={loggedIn}/>

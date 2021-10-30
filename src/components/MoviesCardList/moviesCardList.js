@@ -2,52 +2,27 @@ import React, { useState, useEffect } from 'react';
 import MoviesCard from "../MoviesCard/moviesCard";
 import './moviesCardList.css';
 
-function MoviesCardList({ movies, searchProblemMessage, moviesStartParams }) {
-    const [partOfMovies, setPartOfMovies] = useState([]);
-
-    useEffect(() => {
-        const slicedMovies = movies.slice(0, moviesStartParams.moviesStartCount);
-
-        if (slicedMovies.length !== partOfMovies.length) {
-            setPartOfMovies(slicedMovies);
-        }
-    }, [movies])
-
-    const addMovies = () => {
-      const slicedMovies = movies.slice(0, partOfMovies.length + moviesStartParams.addMoviesCount);
-      setPartOfMovies(slicedMovies);
-    }
-
+function MoviesCardList(props) {
+    const { movies } = props;
     return (
-        <section className='movies-cardList'>
-            <div className='movies-cardList__container'>
-                <div className='movies-cardList__card'>
-                    {
-                      partOfMovies.length ?  partOfMovies.map((movie) => {
-                            return (
-                                <MoviesCard
-                                    key={ movie.id }
-                                    url={ "https://api.nomoreparties.co" + movie.image.url}
-                                    title={ movie.nameRU }
-                                    duration={ movie.duration }
-                                />
-                            )
+        <div className='movies-cardList__card'>
+            {
+              movies.length ?  movies.map((movie) => {
+                    return (
+                        <MoviesCard
+                            key={ movie.id }
+                            moviesId={ movie.id }
+                            url={ "https://api.nomoreparties.co" + movie.image.url}
+                            title={ movie.nameRU }
+                            duration={ movie.duration }
+                            updateLikedMoviesIds={ props.updateLikedMoviesIds }
+                            likedMoviesIds={props.likedMoviesIds}
+                        />
+                    )
 
-                      }) : (searchProblemMessage ? (<span className='movies-cardList__error'>{ searchProblemMessage }</span>) : null)
-                    }
-                </div>
-               {
-                 (partOfMovies.length && (movies.length !== partOfMovies.length)) ? (
-                   <button
-                     className='movies-cardList__button'
-                     onClick={ addMovies }
-                   >
-                     Ещё
-                   </button>
-                 ) : null
-               }
-            </div>
-        </section>
+              }) : null
+            }
+        </div>
     )
 }
 

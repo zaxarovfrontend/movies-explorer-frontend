@@ -25,7 +25,6 @@ export function complexMoviesFilter(movies, searchString, isOnlyShortMovies) {
 
     if (isOnlyShortMovies) {
         const filteredMoviesByShortFilms = filterMoviesByShortType(filteredMoviesByTitle);
-        console.log('filteredMoviesByShortFilms', filteredMoviesByShortFilms)
         return filteredMoviesByShortFilms;
     }
 

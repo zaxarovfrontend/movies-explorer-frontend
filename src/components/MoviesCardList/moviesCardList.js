@@ -3,7 +3,7 @@ import MoviesCard from "../MoviesCard/moviesCard";
 import './moviesCardList.css';
 
 function MoviesCardList(props) {
-    const { movies } = props;
+    const { movies, searchProblemMessage } = props;
     return (
         <div className='movies-cardList__card'>
             {
@@ -21,6 +21,9 @@ function MoviesCardList(props) {
                     )
 
               }) : null
+            }
+            {
+                (searchProblemMessage ? (<span className='movies-cardList__error'>{ searchProblemMessage }</span>) : null)
             }
         </div>
     )

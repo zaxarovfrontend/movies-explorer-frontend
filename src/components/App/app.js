@@ -25,7 +25,9 @@ function App(props) {
 
     const [formError, setFormError] = useState({ registerError: false, errorMessage: "" });
 
-    const [likedMoviesIds, setLikedMoviesIds] = useState([]); // [15, 4 ,5]
+    const [likedMoviesIds, setLikedMoviesIds] = useState([]);
+
+    const [searchProblemMessage, setSearchProblemMessage] = useState('');
 
     const updateLikedMoviesIds = (id) => {
         let tempArr = [...likedMoviesIds];
@@ -157,6 +159,8 @@ function App(props) {
                         <Movies
                           updateLikedMoviesIds={updateLikedMoviesIds}
                           likedMoviesIds={ likedMoviesIds}
+                          searchProblemMessage={ searchProblemMessage }
+                          setSearchProblemMessage={ setSearchProblemMessage }
                         />
                     </Route>
                     <Route path ='/saved-movies'>
@@ -164,6 +168,8 @@ function App(props) {
                         <SavedMovies
                           likedMoviesIds={likedMoviesIds}
                           updateLikedMoviesIds={updateLikedMoviesIds}
+                          searchProblemMessage={ searchProblemMessage }
+                          setSearchProblemMessage={ setSearchProblemMessage }
                         />
                     </Route>
                     <Route path ='/profile'>

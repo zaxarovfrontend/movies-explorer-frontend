@@ -26,10 +26,8 @@ function MoviesCardListWrapper(props) {
           movies={ partOfMovies }
           updateLikedMoviesIds={updateLikedMoviesIds}
           likedMoviesIds={likedMoviesIds}
+          searchProblemMessage={ searchProblemMessage }
         />
-        {
-          (searchProblemMessage ? (<span className='movies-cardList__error'>{ searchProblemMessage }</span>) : null)
-        }
         {
           (partOfMovies.length && (movies.length !== partOfMovies.length)) ? (
             <button

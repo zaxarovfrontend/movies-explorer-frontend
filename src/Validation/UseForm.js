@@ -2,7 +2,7 @@ import React, { useCallback } from "react";
 
 //хук управления формой и валидации формы
 export function useForm() {
-    const [values, setValues] = React.useState({});
+    const [values, setValues] = React.useState({ search: '' });
 
     const handleChange = (event) => {
         const target = event.target;

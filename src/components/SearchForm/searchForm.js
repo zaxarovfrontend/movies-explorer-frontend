@@ -8,13 +8,12 @@ import { getAllMovies } from '../../utils/MoviesApi';
 
 import { complexMoviesFilter } from '../../utils/movies-filter';
 
-function SearchForm({ setMovies, setPreloaderStatus, setSearchProblemMessage }) {
+function SearchForm(props) {
+    const { setMovies, setPreloaderStatus, setSearchProblemMessage, searchFormType } = props; // searchFormType 'movies' 'likedMovies'
     const { values, handleChange } = useForm();
     const [shortMoviesFilter, setShortMoviesFilter] = useState(false);
 
-    function handleSubmit(evt) {
-        evt.preventDefault();
-
+    function handleSubmitMovies() {
         const moviesFromLocalStorageString = localStorage.getItem('movies');
 
         if (moviesFromLocalStorageString) {
@@ -23,6 +22,8 @@ function SearchForm({ setMovies, setPreloaderStatus, setSearchProblemMessage }) 
 
             if (filteredMovies.length === 0) {
                 setSearchProblemMessage('Ничего не найдено');
+            } else {
+                setSearchProblemMessage('');
             }
 
             setMovies( filteredMovies);
@@ -46,7 +47,6 @@ function SearchForm({ setMovies, setPreloaderStatus, setSearchProblemMessage }) 
                     setMovies(filteredMovies);
                 })
                 .catch((error) => {
-                  console.log('2222')
                     // Прячем прелоадер
 
                     setPreloaderStatus(false);
@@ -57,9 +57,28 @@ function SearchForm({ setMovies, setPreloaderStatus, setSearchProblemMessage }) 
         }
     }
 
+  function handleSubmitLikedMovies() {
+      setMovies(values, shortMoviesFilter)
+  }
+
+  function formSubmit(evt) {
+    evt.preventDefault();
+
+    if (searchFormType === 'movies') {
+      handleSubmitMovies()
+    }
+
+    if (searchFormType === 'likedMovies') {
+      handleSubmitLikedMovies()
+    }
+  }
+
     return (
         <section className='search-form'>
-            <form className='search-form__group' onSubmit={handleSubmit}>
+            <form
+              className='search-form__group'
+              onSubmit={formSubmit}
+            >
                 <div className='search-form__container'>
                     <input
                         name="search"
@@ -68,7 +87,7 @@ function SearchForm({ setMovies, setPreloaderStatus, setSearchProblemMessage }) 
                         maxLength='30'
                         type="text"
                         placeholder="Фильм"
-                        required
+                        required={ (searchFormType === 'movies') ? true : false }
                         autoComplete='off'
                     />
                     <button className='search-form__button' type="submit"></button>

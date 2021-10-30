@@ -7,9 +7,10 @@ import { getParamsByScreenWidth } from '../../utils/getParamsByScreenWidth';
 
 function Movies(props) {
     const [isPreloaderActive, setPreloaderStatus] = useState(false);
-    const [searchProblemMessage, setSearchProblemMessage] = useState('');
     const [moviesStartParams, setMoviesStartParams] = useState(getParamsByScreenWidth());
     const [allMovies, setMovies] = useState([]);
+
+    const { searchProblemMessage, setSearchProblemMessage } = props;
 
     const memoizedCallback = useCallback(
       () => {
@@ -34,6 +35,7 @@ function Movies(props) {
                setMovies={ setMovies }
                setPreloaderStatus={ setPreloaderStatus }
                setSearchProblemMessage={ setSearchProblemMessage }
+               searchFormType="movies"
              />
             {
               isPreloaderActive && (

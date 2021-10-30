@@ -1,27 +1,59 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Footer from "../Footer/footer";
 import SearchForm from "../SearchForm/searchForm";
 import MoviesCardList from "../MoviesCardList/moviesCardList";
+import { complexMoviesFilter } from '../../utils/movies-filter';
 
 function SavedMovies(props) {
-    const { likedMoviesIds, updateLikedMoviesIds } = props;
-    const moviesFromLocalStorageString = JSON.parse(localStorage.getItem('movies') || '[]');
+    const { likedMoviesIds, updateLikedMoviesIds, searchProblemMessage, setSearchProblemMessage } = props;
 
-    const onlyLikedMovies = moviesFromLocalStorageString.filter((movie) => { // [{id: 5}]
-      return likedMoviesIds.indexOf(movie.id) !== -1;  // [5, 14].indexOf(5) = 0
-    })
+    function getOnlyLikedMovies() {
+      const moviesFromLocalStorageString = JSON.parse(localStorage.getItem('movies') || '[]');
 
-   console.log('onlyLikedMovies', onlyLikedMovies)
+      return moviesFromLocalStorageString.filter((movie) => {
+        return likedMoviesIds.indexOf(movie.id) !== -1;
+      })
+    }
+
+    const [onlyLikedMovies, setOnlyLikedMovies] = useState(getOnlyLikedMovies());
+
+    const [filteredLikedMovies, setfFilteredLikedMovies] = useState(onlyLikedMovies);
+
+    useEffect(() => {
+      const onlyLikedMovies = getOnlyLikedMovies();
+      setfFilteredLikedMovies(onlyLikedMovies);
+    }, [likedMoviesIds]);
+
+    const setMovies = (values, shortMoviesFilter) => {
+      const filteredMoviesTemp = complexMoviesFilter(onlyLikedMovies, values.search, shortMoviesFilter);
+
+      if (filteredMoviesTemp.length === 0) {
+        setSearchProblemMessage('Ничего не найдено');
+      } else {
+        setSearchProblemMessage('');
+      }
+
+      setfFilteredLikedMovies(filteredMoviesTemp);
+    }
 
     return (
         <main className='main'>
-            <SearchForm />
-            <MoviesCardList
-              movies={ onlyLikedMovies }
-              updateLikedMoviesIds={ updateLikedMoviesIds }
-              likedMoviesIds={ likedMoviesIds }
+            <SearchForm
+              setMovies={ setMovies }
+              setSearchProblemMessage={ () => {} }
+              searchFormType="likedMovies"
             />
-            <Footer/>
+            <section className='movies-cardList'>
+              <div className='movies-cardList__container'>
+                  <MoviesCardList
+                    movies={ filteredLikedMovies }
+                    updateLikedMoviesIds={ updateLikedMoviesIds }
+                    likedMoviesIds={ likedMoviesIds }
+                    searchProblemMessage={ searchProblemMessage }
+                  />
+                </div>
+            </section>
+          <Footer/>
         </main>
     )
 }

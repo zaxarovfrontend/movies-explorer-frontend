@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Switch, useHistory } from "react-router-dom";
 import api from '../../utils/api';
 import '../../index.css';
@@ -29,18 +29,64 @@ function App(props) {
 
     const [searchProblemMessage, setSearchProblemMessage] = useState('');
 
-    const updateLikedMoviesIds = (id) => {
-        let tempArr = [...likedMoviesIds];
+    const [likedMoviesByServer, setLikedMoviesByServer] = useState([]);
 
-        if (tempArr.indexOf(id) === -1) {
-            tempArr.push(id);
+
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    api.getAllLikedMovie(token)
+      .then((data) => {
+        setLikedMoviesByServer(data);
+      })
+      .catch((err) => {
+        console.log('res err', err)
+      })
+  }, [])
+
+    useEffect(() => {
+      const tempArr = likedMoviesByServer.map((item) => {
+        return item.movieId;
+      })
+      setLikedMoviesIds(tempArr);
+    }, [likedMoviesByServer])
+
+    const updateLikedMoviesIds = (id, movie) => { // id = 1
+        const token = localStorage.getItem('token');
+
+        const isNeedSaveLike = !likedMoviesByServer.find((item) => {
+          return item.movieId === id;
+        })
+
+        if (isNeedSaveLike) {
+            api.saveLikedMovie(movie, token)
+              .then((data) => {
+                  let tempArr = [...likedMoviesByServer];
+                  tempArr.push(data);
+                  setLikedMoviesByServer(tempArr)
+              })
+              .catch((err) => {
+                  console.log('res err', err)
+              })
         } else {
-            tempArr = tempArr.filter((item) => {
-                return item !== id;
+            const tempObj = likedMoviesByServer.find((item) => {
+                return item.movieId === id;
             })
-        }
 
-        setLikedMoviesIds(tempArr)
+            api.deleteLikedMovie(tempObj._id, token)
+              .then((data) => {
+                  console.log('deleteLiked Movieres data', data)
+
+                  const tempArr = likedMoviesByServer.filter((item) => {
+                    return item._id !== tempObj._id;
+                  })
+
+                  setLikedMoviesByServer(tempArr)
+              })
+              .catch((err) => {
+                  console.log('deleteLikedMovie res err', err)
+              })
+        }
     }
 
     function clearFormError() {
@@ -158,7 +204,7 @@ function App(props) {
                         <Header  loggedIn={loggedIn}/>
                         <Movies
                           updateLikedMoviesIds={updateLikedMoviesIds}
-                          likedMoviesIds={ likedMoviesIds}
+                          likedMoviesIds={ likedMoviesIds }
                           searchProblemMessage={ searchProblemMessage }
                           setSearchProblemMessage={ setSearchProblemMessage }
                         />
@@ -166,7 +212,7 @@ function App(props) {
                     <ProtectedRoute loggedIn={ loggedIn } path='/saved-movies'>
                             <Header loggedIn={loggedIn} />
                             <SavedMovies
-                              likedMoviesIds={likedMoviesIds}
+                              likedMoviesIds={ likedMoviesIds }
                               updateLikedMoviesIds={updateLikedMoviesIds}
                               searchProblemMessage={ searchProblemMessage }
                               setSearchProblemMessage={ setSearchProblemMessage }

@@ -10,6 +10,7 @@ function MoviesCardList(props) {
               movies.length ?  movies.map((movie) => {
                     return (
                         <MoviesCard
+                            movie={ movie }
                             key={ movie.id }
                             moviesId={ movie.id }
                             url={ "https://api.nomoreparties.co" + movie.image.url}

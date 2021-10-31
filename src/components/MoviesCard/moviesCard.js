@@ -4,7 +4,7 @@ import {useLocation} from "react-router-dom";
 
 function MoviesCard(props) {
     const { pathname } = useLocation();
-    const { moviesId, updateLikedMoviesIds, likedMoviesIds } = props;
+    const { moviesId, updateLikedMoviesIds, likedMoviesIds, movie } = props;
 
     const isMovieLiked = likedMoviesIds.indexOf(moviesId) !== -1;
     const likeClassName = `movies-card__like ${isMovieLiked ? 'movies-card__like_active' : ''}`;
@@ -18,12 +18,12 @@ function MoviesCard(props) {
                     {pathname === "/movies" ? (
                         <button
                           className={ likeClassName }
-                          onClick={ () => { updateLikedMoviesIds(moviesId) } }
+                          onClick={ () => { updateLikedMoviesIds(moviesId, movie) } }
                         />
                     ) : (
                         <button
                           className='movies-card__delete'
-                          onClick={ () => { updateLikedMoviesIds(moviesId) } }
+                          onClick={ () => { updateLikedMoviesIds(moviesId, movie) } }
                         />
                     )}
                 </div>

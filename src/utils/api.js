@@ -16,7 +16,6 @@ class Api {
     }
 
     editUserData(data, token) {
-        console.log(data)
         return fetch(`${this._url}/users/me`, {
             method: "PATCH",
             headers: {
@@ -30,6 +29,90 @@ class Api {
             })
         })
             .then(this._checkRes)
+    }
+
+    getAllLikedMovie(token) {
+        const pr = fetch(`${this._url}/movies`, {
+            method: "GET",
+            headers: {
+                'Accept': 'application/json',
+                'Content-type': 'application/json',
+                Authorization: `Bearer ${token}`
+            },
+        });
+
+        return pr
+          .then((data) => {
+              if (data.ok) {
+                  return data.json();
+              }
+
+              return Promise.reject();
+          })
+          .catch((err) => {
+              return Promise.reject();
+          })
+    }
+
+    saveLikedMovie(movie, token) {
+        const pr = fetch(`${this._url}/movies`, {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json',
+                'Content-type': 'application/json',
+                Authorization: `Bearer ${token}`
+            },
+
+            body: JSON.stringify({
+                country: movie.country,
+                director: movie.director,
+                duration: movie.duration,
+                year: movie.year,
+                description: movie.description,
+                image: 'https://api.nomoreparties.co/beatfilm-movies' + movie.image.url,
+                trailer: movie.trailerLink,
+                nameRU: movie.nameRU,
+                nameEN: movie.nameEN,
+                thumbnail: 'https://api.nomoreparties.co/beatfilm-movies' + movie.image.formats.thumbnail.url,
+                movieId: movie.id,
+            }),
+        });
+
+        return pr
+          .then((data) => {
+              if (data.ok) {
+                  return data.json();
+              }
+
+              return Promise.reject();
+          })
+          .catch((err) => {
+              return Promise.reject();
+          })
+    }
+
+    deleteLikedMovie(movieId, token) {
+        console.log('movieId', movieId)
+        const pr = fetch(`${this._url}/movies/${movieId}`, {
+            method: "DELETE",
+            headers: {
+                'Accept': 'application/json',
+                'Content-type': 'application/json',
+                Authorization: `Bearer ${token}`
+            },
+        });
+
+        return pr
+          .then((data) => {
+              if (data.ok) {
+                  return data.json();
+              }
+
+              return Promise.reject();
+          })
+          .catch((err) => {
+              return Promise.reject();
+          })
     }
 
 
@@ -50,4 +133,4 @@ const api = new Api({
     }
 });
 
-export default api
+export default api;

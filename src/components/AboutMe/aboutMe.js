@@ -1,6 +1,6 @@
 import React from 'react';
 import './aboutMe.css';
-import image from '../../images/pic__COLOR_pic.jpg';
+import image from '../../images/ME.jpeg';
 
 function AboutMe() {
     return(

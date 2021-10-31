@@ -57,37 +57,40 @@ function Profile(props) {
             <input autoComplete="off" className="profile__input"
                    type="text"
                    name="name"
-                   value={values.name}
+                   value={values.name || ''}
                    placeholder={currentUser.name}
                    onChange={changeName}
                    required
             />
-            {
-              errors.name && (
-                <span className='register__subtitle'>
+
+          </div>
+          {
+            errors.name && (
+              <span className='register__subtitle register__subtitle_active'>
                   { errors.name }
                 </span>
-              )
-            }
-          </div>
+            )
+          }
+
           <div className="profile__box profile__box-style">
             <p className="profile__input-name">E-mail</p>
             <input autoComplete="off" className="profile__input"
                    type="email"
                    name="email"
-                   value={values.email}
+                   value={values.email || ''}
                    placeholder={currentUser.email}
                    onChange={changeEmail}
                    required/>
-            {
-              errors.email && (
-                <span className='register__subtitle'>
+          </div>
+          {
+            errors.email && (
+              <span className='register__subtitle register__subtitle_active'>
                   { errors.email }
                 </span>
-              )
-            }
+            )
+          }
 
-          </div>
+
           {
             props.formError.registerError && (
               <span className='register__subtitle'>

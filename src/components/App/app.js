@@ -75,7 +75,6 @@ function App(props) {
 
             api.deleteLikedMovie(tempObj._id, token)
               .then((data) => {
-                  console.log('deleteLiked Movieres data', data)
 
                   const tempArr = likedMoviesByServer.filter((item) => {
                     return item._id !== tempObj._id;

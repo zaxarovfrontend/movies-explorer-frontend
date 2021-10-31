@@ -6,7 +6,6 @@ import LogoHeader from '../LogoHeader/logo';
 import { useFormWithValidation } from '../../Validation/UseForm';
 
 function Login(props) {
-  console.log(props)
   const {
     values,
     handleChange,
@@ -34,7 +33,7 @@ function Login(props) {
             <input className="register__input"
                    type="email"
                    name="email"
-                   value={values.email}
+                   value={values.email || ''}
               // placeholder={props.email}
                    onChange={handleChange}
                    required/>
@@ -46,7 +45,7 @@ function Login(props) {
               className="register__input"
               type="password"
               name="password"
-              value={values.password}
+              value={values.password || ''}
               onChange={handleChange}
               // placeholder={props.password}
               required/>

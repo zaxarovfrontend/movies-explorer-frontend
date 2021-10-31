@@ -64,15 +64,15 @@ class Api {
             },
 
             body: JSON.stringify({
-                country: movie.country,
+                country: movie.country || "данные отсутствуют",
                 director: movie.director,
                 duration: movie.duration,
                 year: movie.year,
                 description: movie.description,
                 image: 'https://api.nomoreparties.co/beatfilm-movies' + movie.image.url,
                 trailer: movie.trailerLink,
-                nameRU: movie.nameRU,
-                nameEN: movie.nameEN,
+                nameRU: movie.nameRU || "Фильм не имеет русского имени",
+                nameEN: movie.nameEN || "Фильм не имеет английского имени",
                 thumbnail: 'https://api.nomoreparties.co/beatfilm-movies' + movie.image.formats.thumbnail.url,
                 movieId: movie.id,
             }),

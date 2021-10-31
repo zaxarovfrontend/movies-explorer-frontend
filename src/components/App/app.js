@@ -133,7 +133,7 @@ function App(props) {
             })
             .catch((err) => console.log(err))
 
-    }, [])
+    }, [loggedIn])
 
     function handleUpdateUser(data) {
         api.editUserData(data, localStorage.token)
@@ -224,7 +224,9 @@ function App(props) {
                           handleUpdateUser={handleUpdateUser}
                           formError={ formError }
                           signOut={ signOut }
-                          clearFormError={clearFormError}/>
+                          clearFormError={clearFormError}
+                          // currentUser={ currentUser }
+                        />
                     </ProtectedRoute>
                     <Route path='/signin'>
                         <Login onLogin={login}

@@ -6,34 +6,39 @@ import { useFormWithValidation } from '../../Validation/UseForm';
 
 function Profile(props) {
   const currentUser = React.useContext(CurrentUserContext);
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
 
   const {
     values,
-    // handleChange,
+    errors,
+    handleChange,
     isValid,
-    // resetForm
   } = useFormWithValidation(props.clearFormError);
 
-  React.useEffect(() => {
-    setName(currentUser.name);
-    setEmail(currentUser.email);
-  }, [currentUser]);
-
   function changeName(e) {
-    setName(e.target.value);
+    if (currentUser.name === e.target.value) {
+      e.target.setCustomValidity("Имя пользователя не может сопадать с существующем!");
+    } else {
+      e.target.setCustomValidity("");
+    }
+
+    handleChange(e)
   }
 
   function changeEmail(e) {
-    setEmail(e.target.value);
+    if (currentUser.email === e.target.value) {
+      e.target.setCustomValidity("email не может сопадать с существующем!");
+    } else {
+      e.target.setCustomValidity("");
+    }
+
+    handleChange(e)
   }
 
   function handleSubmit(e) {
     e.preventDefault();
     props.handleUpdateUser({
-      name,
-      email: email
+      name: values.name,
+      email: values.email,
     });
   }
 
@@ -41,7 +46,7 @@ function Profile(props) {
     <section className="profile">
       <div className="profile__container">
         <h1 className="profile__title">
-                    Привет, {name}!
+                    Привет, {currentUser.name}!
         </h1>
         <form className="profile__form"
                     onSubmit={handleSubmit}>
@@ -53,9 +58,17 @@ function Profile(props) {
                    type="text"
                    name="name"
                    value={values.name}
-                   placeholder={name}
+                   placeholder={currentUser.name}
                    onChange={changeName}
-                   required/>
+                   required
+            />
+            {
+              errors.name && (
+                <span className='register__subtitle'>
+                  { errors.name }
+                </span>
+              )
+            }
           </div>
           <div className="profile__box profile__box-style">
             <p className="profile__input-name">E-mail</p>
@@ -63,21 +76,29 @@ function Profile(props) {
                    type="email"
                    name="email"
                    value={values.email}
-                   placeholder={email}
+                   placeholder={currentUser.email}
                    onChange={changeEmail}
                    required/>
+            {
+              errors.email && (
+                <span className='register__subtitle'>
+                  { errors.email }
+                </span>
+              )
+            }
+
           </div>
           {
             props.formError.registerError && (
               <span className='register__subtitle'>
-                                    { props.formError.errorMessage || "Что-то пошло не так..." }
-                                </span>
+                  { props.formError.errorMessage || "Что-то пошло не так..." }
+              </span>
             )
           }
 
           <button className="profile__subtitle"
                   type="submit"
-                  // disabled={!isValid}
+                  disabled={!isValid}
           >
                   Редактировать
           </button>

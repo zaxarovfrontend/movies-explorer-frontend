@@ -55,8 +55,8 @@ function Login(props) {
           {
             props.formError.registerError && (
               <span className='register__subtitle'>
-                                    { props.formError.errorMessage || "Что-то пошло не так..." }
-                                </span>
+                  { props.formError.errorMessage }
+              </span>
             )
           }
 

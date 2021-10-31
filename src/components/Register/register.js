@@ -59,6 +59,13 @@ function Register(props) {
                             pattern="^[A-Za-zА-ЯЁа-яё]+$"
                             required
                         />
+                            {
+                                errors.name && (
+                                  <span className='register__subtitle'>
+                                      { errors.name }
+                                  </span>
+                                )
+                            }
                     </div>
                     <div className='register__box'>
                         <p className='register__input-name'>E-mail</p>
@@ -72,6 +79,13 @@ function Register(props) {
                             // placeholder='email'
                             required
                         />
+                        {
+                            errors.email && (
+                              <span className='register__subtitle'>
+                                      { errors.email }
+                                  </span>
+                            )
+                        }
                     </div>
                     <div className='register__box'>
                         <p className='register__input-name'>Пароль</p>
@@ -80,12 +94,20 @@ function Register(props) {
                             className='register__input'
                             name='password'
                             value={values.password}
+                            minLength='8'
                             onChange={handleChange}
                             // className='register__input-name'
                             // placeholder="password"
                             type='password'
                             required
                         />
+                        {
+                            errors.password && (
+                              <span className='register__subtitle'>
+                                      { errors.password }
+                                  </span>
+                            )
+                        }
                     </div>
 
                     {

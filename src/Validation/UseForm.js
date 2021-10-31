@@ -34,7 +34,6 @@ export function useFormWithValidation(clearFormError) {
             [name]: target.validationMessage
         });
 
-
         setIsValid(target.closest("form").checkValidity());
     };
 

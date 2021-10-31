@@ -84,7 +84,7 @@
     transition: opacity 0.9s linear 0.3s;
 }
 .portfolio__title:hover {
-    opacity:70%;
+    opacity: .6;
 }
 
 

@@ -123,8 +123,8 @@ class Api {
 }
 
 const api = new Api({
-  url: `https://api.diplom.zaxarov.nomoredomains.club`,
-  // url: `http://localhost:3000`,
+  // url: `https://api.diplom.zaxarov.nomoredomains.club`,
+  url: `http://localhost:3000`,
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json'

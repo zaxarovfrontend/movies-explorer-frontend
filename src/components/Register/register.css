@@ -66,12 +66,20 @@
 }
 
 .register__input {
-    width: 387px;
+    width: 280px;
     background-color: #202020;
     border: 0;
     color: #FFFFFF;
     margin-top: 10px;
 }
+
+@media screen and (min-width: 768px) {
+    .register__input {
+        width: 391px;
+    }
+}
+
+
 
 .register__input::placeholder {
     color: #FFFFFF;

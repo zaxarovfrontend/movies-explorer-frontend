@@ -84,7 +84,7 @@
     transition: opacity 0.9s linear 0.3s;
 }
 .portfolio__title:hover {
-    opacity:60%;
+    opacity:70%;
 }
 
 
@@ -93,14 +93,12 @@
         font-size: 30px;
         line-height: 50px;
         padding: 3px 0 23px 0;
-
     }
 }
 
 @media screen and (min-width: 1280px) {
     .portfolio__title {
         padding: 19px 0 23px 0;
-
     }
 }
 

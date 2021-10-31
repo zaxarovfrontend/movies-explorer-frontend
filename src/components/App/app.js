@@ -83,7 +83,7 @@ function App(props) {
                   setLikedMoviesByServer(tempArr)
               })
               .catch((err) => {
-                  console.log('deleteLikedMovie res err', err)
+                  // console.log('deleteLikedMovie res err', err)
               })
         }
     }
@@ -188,7 +188,7 @@ function App(props) {
     function signOut() {
         localStorage.removeItem("token");
         setLoggedIn(false);
-        // history.push('signin');
+        history.push('signin');
     }
 
     return (

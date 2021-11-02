@@ -28,7 +28,10 @@ class Api {
         email: data.email
       })
     })
-      .then(this._checkRes);
+      .then(this._checkRes)
+      .catch(() => {
+        return Promise.reject()
+    })
   }
 
   getAllLikedMovie(token) {
@@ -123,8 +126,8 @@ class Api {
 }
 
 const api = new Api({
-  url: `https://api.diplom.zaxarov.nomoredomains.club`,
-  // url: `http://localhost:3000`,
+  // url: `https://api.diplom.zaxarov.nomoredomains.club`,
+  url: `http://localhost:3000`,
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json'

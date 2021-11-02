@@ -1,6 +1,7 @@
 import React from 'react';
 import './moviesCard.css';
 import {useLocation} from "react-router-dom";
+import { CurrentUserContext } from '../Context/CurrentUserContext';
 
 function MoviesCard(props) {
     const { pathname } = useLocation();
@@ -12,7 +13,9 @@ function MoviesCard(props) {
     return (
         <section className='movies-card'>
             <div className='movies-card__container'>
-                <img className='movies-img' src={props.url} alt={props.title}></img>
+                <a href={movie.trailerLink} target="_blank">
+                    <img className='movies-img' src={props.url} alt={props.title}></img>
+                </a>
                 <div className='movies-card__group'>
                     <h2 className='movies-card__title'>{props.title}</h2>
                     {pathname === "/movies" ? (

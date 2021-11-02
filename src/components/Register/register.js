@@ -57,6 +57,7 @@ function Register(props) {
               className="register__input"
               type="email"
               name="email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
               value={values.email || ''}
               onChange={handleChange}
               // placeholder='email'

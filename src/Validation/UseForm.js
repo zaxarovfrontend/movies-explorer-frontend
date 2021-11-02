@@ -52,5 +52,6 @@ export function useFormWithValidation(clearFormError) {
         errors: errors,
         isValid: isValid,
         resetForm: resetForm,
+        setIsValid: setIsValid,
     };
 }

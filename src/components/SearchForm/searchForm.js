@@ -14,12 +14,13 @@ function SearchForm(props) {
     setPreloaderStatus,
     setSearchProblemMessage,
     searchFormType
-  } = props; // searchFormType 'movies' 'likedMovies'
+  } = props;
   const {
     values,
     handleChange
   } = useForm();
   const [shortMoviesFilter, setShortMoviesFilter] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   function handleSubmitMovies() {
     const moviesFromLocalStorageString = localStorage.getItem('movies');
@@ -71,12 +72,20 @@ function SearchForm(props) {
   function formSubmit(evt) {
     evt.preventDefault();
 
-    if (searchFormType === 'movies') {
-      handleSubmitMovies();
-    }
+    if (!evt.target.elements.search.value) {
+      evt.target.elements.search.setCustomValidity("Нужно ввести ключевое слово");
+      setErrorMessage("Нужно ввести ключевое слово");
+    } else {
+      evt.target.elements.search.setCustomValidity("");
+      setErrorMessage("");
 
-    if (searchFormType === 'likedMovies') {
-      handleSubmitLikedMovies();
+      if (searchFormType === 'movies') {
+        handleSubmitMovies();
+      }
+
+      if (searchFormType === 'likedMovies') {
+        handleSubmitLikedMovies();
+      }
     }
   }
 
@@ -89,14 +98,26 @@ function SearchForm(props) {
         <div className="search-form__container">
           <input
             name="search"
-            onChange={handleChange}
+            onChange={(evt) => {
+              setErrorMessage("");
+              handleChange(evt);
+              evt.target.setCustomValidity("");
+            }}
             className="search-form__input"
             maxLength="30"
             type="text"
             placeholder="Фильм"
-            required={(searchFormType === 'movies') ? true : false}
+            // required={(searchFormType === 'movies') ? true : false}
+            required={false}
             autoComplete="off"
           />
+          {
+            errorMessage && (
+              <span className='register__subtitle register__subtitle_active'>
+                  { errorMessage }
+                </span>
+            )
+          }
           <button className="search-form__button" type="submit"></button>
         </div>
         <FilterCheckbox

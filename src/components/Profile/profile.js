@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './profile.css';
 import { Link } from 'react-router-dom';
 import { CurrentUserContext } from '../Context/CurrentUserContext';
@@ -7,14 +7,34 @@ import { useFormWithValidation } from '../../Validation/UseForm';
 function Profile(props) {
   const currentUser = React.useContext(CurrentUserContext);
 
+  const { profileUpdateMessage, setProfileUpdateMessage } = props;
+
   const {
     values,
     errors,
     handleChange,
     isValid,
+    resetForm
   } = useFormWithValidation(props.clearFormError);
 
+  useEffect(() => {
+    // if (currentUser.name === e.target.elements.name.value) {
+    //   e.target.elements.name.setCustomValidity("Имя пользователя не может сопадать с существующем!");
+    //   setIsValid(false);
+    // } else {
+    //   e.target.elements.name.setCustomValidity("");
+    // }
+    //
+    // if (currentUser.email === e.target.elements.email.value) {
+    //   e.target.elements.email.setCustomValidity("email не может сопадать с существующем!");
+    //   setIsValid(false);
+    // } else {
+    //   e.target.elements.email.setCustomValidity("");
+    // }
+  }, [currentUser])
+
   function changeName(e) {
+    setProfileUpdateMessage("")
     if (currentUser.name === e.target.value) {
       e.target.setCustomValidity("Имя пользователя не может сопадать с существующем!");
     } else {
@@ -25,6 +45,7 @@ function Profile(props) {
   }
 
   function changeEmail(e) {
+    setProfileUpdateMessage("")
     if (currentUser.email === e.target.value) {
       e.target.setCustomValidity("email не может сопадать с существующем!");
     } else {
@@ -36,10 +57,14 @@ function Profile(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
+
     props.handleUpdateUser({
       name: values.name,
       email: values.email,
-    });
+    })
+    .then(() => {
+      resetForm();
+    })
   }
 
   return (
@@ -79,6 +104,7 @@ function Profile(props) {
                    name="email"
                    value={values.email || ''}
                    placeholder={currentUser.email}
+                   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                    onChange={changeEmail}
                    required/>
           </div>
@@ -90,11 +116,18 @@ function Profile(props) {
             )
           }
 
-
           {
             props.formError.registerError && (
               <span className='register__subtitle'>
                   { props.formError.errorMessage || "Что-то пошло не так..." }
+              </span>
+            )
+          }
+
+          {
+            profileUpdateMessage && (
+              <span className='register__subtitle'>
+                  { profileUpdateMessage }
               </span>
             )
           }
@@ -105,7 +138,7 @@ function Profile(props) {
           >
                   Редактировать
           </button>
-          <Link className="profile__exit" to="/signin" onClick={ props.signOut }>
+          <Link className="profile__exit" to="/" onClick={ props.signOut }>
                   Выйти из аккаунта
           </Link>
         </form>

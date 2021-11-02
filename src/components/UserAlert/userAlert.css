@@ -1,0 +1,25 @@
+.userAlert {
+    display: inline-flex;
+    position: fixed;
+    top: 60px;
+    right: 60px;
+    min-width: 200px;
+    height: 60px;
+    background-color: #999;
+    color: black;
+    padding: 10px;
+    border-radius: 10px;
+    animation: show 2s linear;
+}
+
+@keyframes show {
+    0% {
+        opacity: 0;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}

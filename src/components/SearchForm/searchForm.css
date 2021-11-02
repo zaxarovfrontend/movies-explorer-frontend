@@ -70,6 +70,7 @@
     cursor: pointer;
 }
 
+
 /*.search-form__button:hover {*/
 /*    opacity:60%;*/
 /*}*/
@@ -89,4 +90,28 @@
         font-size: 28px;
         line-height: 34px;
     }
+}
+
+.search-form__error-subtitle {
+    max-width: 292px;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 768px) {
+    .search-form__error-subtitle {
+        max-width: 708px;
+    }
+}
+@media screen and (min-width: 1280px) {
+    .search-form__error-subtitle {
+        max-width: 1140px;
+    }
+}
+
+
+
+.search-form__error-text {
+    font-size: 10px;
+    line-height: 12px;
+    color: #EE3465;
 }

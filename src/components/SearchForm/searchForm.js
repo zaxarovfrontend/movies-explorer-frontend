@@ -91,6 +91,7 @@ function SearchForm(props) {
 
   return (
     <section className="search-form">
+
       <form
         className="search-form__group"
         onSubmit={formSubmit}
@@ -111,19 +112,25 @@ function SearchForm(props) {
             required={false}
             autoComplete="off"
           />
+
+          <button className="search-form__button" type="submit"/>
+        </div>
+          <div className='search-form__error-subtitle'>
           {
             errorMessage && (
-              <span className='register__subtitle register__subtitle_active'>
+              <span className='search-form__error-text'>
                   { errorMessage }
                 </span>
             )
           }
-          <button className="search-form__button" type="submit"></button>
-        </div>
+          </div>
+
+
         <FilterCheckbox
           shortMoviesFilter={shortMoviesFilter}
           setShortMoviesFilter={setShortMoviesFilter}
         />
+
       </form>
     </section>
   );
